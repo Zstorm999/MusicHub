@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Playlists>
+    <Playlist>
+        <name>pl_0</name>
+        <id>0</id>
+    </Playlist>
+    <Playlist>
+        <name>pl_1</name>
+        <id>1</id>
+    </Playlist>
+    <Playlist>
+        <name>pl_2</name>
+        <id>2</id>
+    </Playlist>
+</Playlists>
