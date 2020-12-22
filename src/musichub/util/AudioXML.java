@@ -19,7 +19,7 @@ import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
 /**
- * Handles all XML-related manipulation for object implementing the AudioToXML interface
+ * Handles all XML-related manipulation for objects implementing the AudioToXML interface.
  * @see AudioToXML
  * @author Thomas Archambeau
  */
@@ -35,7 +35,7 @@ public class AudioXML<T extends AudioToXML>{
     private String xmlTypeIdentifier;
 
     /**
-     * Creates a new AudioXML object
+     * Creates a new AudioXML object.
      * @param file The path to the xml file where the data is stored
      * @param klass The class of the objects that will be handled: Object.class
      */
@@ -78,10 +78,10 @@ public class AudioXML<T extends AudioToXML>{
     }
 
     /**
-     * Loads a list of elements from an XML file
-     * 
-     * The list can be empty at the beginning: we aware that this function does not check for duplicates, 
-     * and will thus append the elements extracted from the xml file at the end of the already existing list.
+     * Loads a list of elements from an XML file. <br>
+     * <br>
+     * The list can be empty at the beginning: take care that this function does not check for duplicates, 
+     * and will thus append the elements extracted from the XML file at the end of the already existing list.
      * 
      * @param audioElements a list of elements to be loaded from the file
      */
@@ -131,7 +131,9 @@ public class AudioXML<T extends AudioToXML>{
     }
 
     /**
-     * Saves the list of elements into the XML file specified at the creation of the AudioXML object
+     * Saves the list of elements into the XML file specified at the creation of the AudioXML object. <br>
+     * If the file does not exist prior to the call, it will be created. Beware that setting overwrite to false with a non-existing
+     * file might raise exceptions 
      * @param elements a list of Elements to be saved
      * @param rootName the name of the root node. Will be ignored if overwrite is set to false
      * @param overwrite specify if the function should conserve previous information (if any) in the file
