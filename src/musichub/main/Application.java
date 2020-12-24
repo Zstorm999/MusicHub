@@ -14,8 +14,6 @@ public class Application {
     AudioXML<Playlist> playlistsXML;
     AudioXML<Song> songsXML;
     AudioXML<AudioBook> audioBooksXML;
-    AudioXML<Song> songsXML2;
-    AudioXML<AudioBook> audioBooksXML2;
     //TODO: AudioXML for albums
 
     LinkedList<Playlist> playlists;
@@ -28,8 +26,6 @@ public class Application {
         
         songsXML = new AudioXML<>("./files/elements.xml", Song.class);
         audioBooksXML = new AudioXML<>("./files/elements.xml", AudioBook.class);
-        songsXML2 = new AudioXML<>("./files/elements2.xml", Song.class);
-        audioBooksXML2 = new AudioXML<>("./files/elements2.xml", AudioBook.class);
 
         playlists = new LinkedList<>();
         songs = new LinkedList<>();
