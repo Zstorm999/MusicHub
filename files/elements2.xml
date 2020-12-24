@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<audio>
+        
+    <Song>
+                
+        <Artist>Test</Artist>
+                
+        <Length>120</Length>
+                
+        <Content>nothing</Content>
+                
+        <Title>test as well</Title>
+                
+        <Genre>Rock</Genre>
+                
+        <ID>0</ID>
+            
+    </Song>
+        
+    <Song>
+                
+        <Artist>Test2</Artist>
+                
+        <Length>254</Length>
+                
+        <Content>nothing too</Content>
+                
+        <Title>test as well</Title>
+                
+        <Genre>Hip Hop</Genre>
+                
+        <ID>1</ID>
+            
+    </Song>
+    
+    <AudioBook>
+        <Category>Novel</Category>
+        <Language>French</Language>
+        <Length>15</Length>
+        <Content>nothing yet</Content>
+        <Author>Moi</Author>
+        <Title>Tordan</Title>
+        <ID>0</ID>
+    </AudioBook>
+    <AudioBook>
+        <Category>Youth</Category>
+        <Language>English</Language>
+        <Length>7</Length>
+        <Content>work in progress</Content>
+        <Author>El'</Author>
+        <Title>Well...</Title>
+        <ID>1</ID>
+    </AudioBook>
+</audio>

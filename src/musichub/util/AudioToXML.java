@@ -1,6 +1,7 @@
 package musichub.util;
 
 import java.util.Map;
+import java.util.Arrays;
 import java.util.List;
 /**
  * Represents an object that can be loaded from and to XML via the AudioXML class. <br>
@@ -26,4 +27,8 @@ public interface AudioToXML {
      * @return the Map created
      */
     public Map<String, List<String>> save();
+
+    public static List<String> toList(String attribute){
+        return Arrays.asList(new String[] {attribute});
+    }
 }

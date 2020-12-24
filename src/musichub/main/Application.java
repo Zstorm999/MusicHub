@@ -14,6 +14,8 @@ public class Application {
     AudioXML<Playlist> playlistsXML;
     AudioXML<Song> songsXML;
     AudioXML<AudioBook> audioBooksXML;
+    AudioXML<Song> songsXML2;
+    AudioXML<AudioBook> audioBooksXML2;
     //TODO: AudioXML for albums
 
     LinkedList<Playlist> playlists;
@@ -24,8 +26,10 @@ public class Application {
     public Application(){
         playlistsXML = new AudioXML<>("./files/playlists.xml", Playlist.class);
         
-        songsXML = new AudioXML<>("./files/???", Song.class);
-        audioBooksXML = new AudioXML<>("./files/???", AudioBook.class);
+        songsXML = new AudioXML<>("./files/elements.xml", Song.class);
+        audioBooksXML = new AudioXML<>("./files/elements.xml", AudioBook.class);
+        songsXML2 = new AudioXML<>("./files/elements2.xml", Song.class);
+        audioBooksXML2 = new AudioXML<>("./files/elements2.xml", AudioBook.class);
 
         playlists = new LinkedList<>();
         songs = new LinkedList<>();
@@ -35,6 +39,12 @@ public class Application {
 
     public void loadAll(){
         playlistsXML.loadXML(playlists);
+
+        //songs.add(new Song("Test", Genres.ROCK, "test as well", 120, 0, "nothing"));
+        //songs.add(new Song("Test2", Genres.HIPHOP, "test as well", 254, 1, "nothing too"));
+
+        //audioBooks.add(new AudioBook("Moi", Languages.FRENCH, Categories.NOVEL, "Tordan", 15, 0, "nothing yet"));
+        //audioBooks.add(new AudioBook("El'", Languages.ENGLISH, Categories.YOUTH, "Well...", 7, 1, "work in progress"));
 
         songsXML.loadXML(songs);
         audioBooksXML.loadXML(audioBooks);

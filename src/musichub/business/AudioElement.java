@@ -8,6 +8,10 @@ public abstract class AudioElement implements AudioToXML{
     protected int id;
     protected String content;
 
+    public AudioElement(){
+        
+    }
+
     public AudioElement(String title, int length, int id, String content){
         this.title = title;
         this.length = length;

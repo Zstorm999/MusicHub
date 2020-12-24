@@ -43,7 +43,6 @@ public class AudioXML<T extends AudioToXML>{
         this.filepath = file;
         this.klass = klass;
         this.xmlTypeIdentifier = klass.getSimpleName();
-        System.out.println(xmlTypeIdentifier);
 
         try{
             dbFactory = DocumentBuilderFactory.newInstance();
@@ -149,6 +148,7 @@ public class AudioXML<T extends AudioToXML>{
         }
         else{
             try{
+
                 document = dbBuilder.parse(new File(filepath));
                 root = document.getDocumentElement();
             }
@@ -192,11 +192,11 @@ public class AudioXML<T extends AudioToXML>{
 
         }
 
-        createXMLFile(document);
+        createXMLFile(document, overwrite);
 
     }
 
-    private void createXMLFile(Document document){
+    private void createXMLFile(Document document, boolean overwrite){
         try{
             DOMSource domSource = new DOMSource(document);
             StreamResult streamResult = new StreamResult(new File(filepath));
@@ -208,7 +208,13 @@ public class AudioXML<T extends AudioToXML>{
         catch(TransformerException tfe){
             tfe.printStackTrace();
         }
-        System.out.println("Created XML file :" +filepath);
+
+        if(overwrite)
+            System.out.print("Created ");
+        else    
+            System.out.print("Updated ");
+
+        System.out.println("XML file :" + filepath);
     }
 
 }

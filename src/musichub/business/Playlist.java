@@ -3,7 +3,6 @@ package musichub.business;
 import musichub.util.AudioToXML;
 
 import java.util.Map;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -25,8 +24,8 @@ public class Playlist implements AudioToXML{
     public Map<String, List<String>> save(){
         HashMap<String, List<String>> attributes = new HashMap<>();
 
-        attributes.put("name", Arrays.asList(new String[] {name} ));
-        attributes.put("id", Arrays.asList(new String[] {Integer.toString(id)} ));
+        attributes.put("name", AudioToXML.toList(name));
+        attributes.put("id", AudioToXML.toList(Integer.toString(id)));
 
         return attributes;
     }
@@ -38,6 +37,9 @@ public class Playlist implements AudioToXML{
             id = Integer.parseInt(attributes.get("id").get(0));
         }
         catch(IndexOutOfBoundsException e){
+            e.printStackTrace();
+        }
+        catch(NumberFormatException e){
             e.printStackTrace();
         }
     }
