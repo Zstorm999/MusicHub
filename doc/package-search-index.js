@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"musichub.business"},{"l":"musichub.util"}]
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"musichub.business"},{"l":"musichub.main"},{"l":"musichub.main.consoleui"},{"l":"musichub.util"}]
