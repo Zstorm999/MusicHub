@@ -24,6 +24,10 @@ public class AudioBook extends AudioElement{
     public String categoryToString(){
         return category.toString();
     }
+    public String toString(){
+        String result = author + " " + language + " " + category + " " + title + " " + length + " " + id + " " + content;
+        return result;
+    }
 
     public Map<String, List<String>> save(){
         //TODO: implement save method

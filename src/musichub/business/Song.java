@@ -13,11 +13,16 @@ public class Song extends AudioElement{
         this.gen = gen;
     }
 
-    public String ArtistToString(){
+    public String artistToString(){
         return artist;
     }
-    public String GenreToString(){
+    public String genreToString(){
         return gen.toString();
+    }
+    public String toString(){
+        String result = null;
+        result = artist + " " + gen + " " + title + " " + length + " " + id + " " + content;
+        return result;
     }
 
     public Map<String, List<String>> save(){
@@ -29,4 +34,5 @@ public class Song extends AudioElement{
         //TODO: implement load method
         
     }
+
 }
