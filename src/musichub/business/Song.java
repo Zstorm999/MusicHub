@@ -7,26 +7,55 @@ import musichub.util.AudioToXML;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * Represents a song
+ * @see AudioBook
+ * @see AudioElement
+ * @see Genres
+ * @author Thomas Archambeau, Eléonore Vaissaire
+ */
 public class Song extends AudioElement{
     private String artist;
     private Genres gen;
 
+    /**
+     * Empty contructor, does nothing (but needed for XML storage)
+     */
     public Song(){
         
     }
 
+    /**
+     * Creates a new song
+     * @param artist the artist
+     * @param gen the genre
+     * @param title the title
+     * @param length the length in seconds
+     * @param id the id
+     * @param content the file associated to this song
+     */
     public Song(String artist, Genres gen, String title, int length, int id, String content){
         super(title, length, id, content);
         this.artist = artist;
         this.gen = gen;
     }
 
+    /**
+     * Returns the artist 
+     * @return the artist
+     */
     public String artistToString(){
         return artist;
     }
+
+    /**
+     * Returns the genre of the song
+     * @return the genre of the song
+     */
     public String genreToString(){
         return gen.toString();
     }
+
     public String toString(){
         String result = null;
         result = artist + " " + gen + " " + title + " " + length + " " + id + " " + content;

@@ -21,7 +21,7 @@ import org.xml.sax.SAXException;
 /**
  * Handles all XML-related manipulation for objects implementing the AudioToXML interface.
  * @see AudioToXML
- * @author Thomas Archambeau
+ * @author Thomas Archambeau, Eléonore Vaisaire
  */
 public class AudioXML<T extends AudioToXML>{
     

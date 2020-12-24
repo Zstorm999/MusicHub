@@ -1,5 +1,10 @@
 package musichub.business;
 
+/**
+ * All possible languages for books
+ * @see AudioBook
+ * @author Thomas Archambeau, Eléonore Vaissaire
+ */
 public enum Languages {
     FRENCH("French"), ENGLISH("English"), ITALIAN("Italian"), SPANISH("Spanish"), GERMAN("German");
 

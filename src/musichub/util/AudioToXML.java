@@ -28,6 +28,11 @@ public interface AudioToXML {
      */
     public Map<String, List<String>> save();
 
+    /**
+     * Transforms a String into a List&lt;String&gt; containing only this element.
+     * @param attribute the element to put in the list
+     * @return a list containing only one element
+     */
     public static List<String> toList(String attribute){
         return Arrays.asList(new String[] {attribute});
     }

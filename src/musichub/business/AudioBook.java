@@ -6,15 +6,36 @@ import java.util.Map;
 
 import musichub.util.AudioToXML;
 
+/**
+ * Represents an audio book
+ * @see Song
+ * @see AudioElement
+ * @see Categories
+ * @see Languages
+ * @author Thomas Archambeau, Eléonore Vaissaire
+ */
 public class AudioBook extends AudioElement{
     private String author;
     private Languages language;
     private Categories category;
 
+    /**
+     * Empty constructor, does nothing (but needed for XML storage)
+     */
     public AudioBook(){
 
     }
 
+    /**
+     * Creates a new AudioBook
+     * @param author the author
+     * @param language the language
+     * @param category the category
+     * @param title the title
+     * @param length the length in seconds
+     * @param id the id
+     * @param content the file associated to this book
+     */
     public AudioBook(String author, Languages language, Categories category, String title, int length, int id, String content){
         super(title, length, id, content);
         this.author = author;
@@ -22,15 +43,31 @@ public class AudioBook extends AudioElement{
         this.category = category;
     }
 
+    /**
+     * Returns the author of the book
+     * @return the author of the book
+     */
     public String authorToString(){
         return author;
     }
+
+    /**
+     * Returns the language of the book
+     * @return the language of the book
+     */
     public String languageToString(){
         return language.toString();
     }
+
+
+    /**
+     * Returns the category of the book
+     * @return the category of the book
+     */
     public String categoryToString(){
         return category.toString();
     }
+
     public String toString(){
         String result = author + " " + language + " " + category + " " + title + " " + length + " " + id + " " + content;
         return result;
@@ -50,15 +87,15 @@ public class AudioBook extends AudioElement{
         return attributes;
     }
 
-    public void load(Map<String, List<String>> arguments){
+    public void load(Map<String, List<String>> attributes){
         try{
-            author = arguments.get("Author").get(0);
-            language = Languages.valueOf(arguments.get("Language").get(0).toUpperCase());
-            category = Categories.valueOf(arguments.get("Category").get(0).toUpperCase());
-            title = arguments.get("Title").get(0);
-            length = Integer.parseInt(arguments.get("Length").get(0));
-            id = Integer.parseInt(arguments.get("ID").get(0));
-            content = arguments.get("Content").get(0);
+            author = attributes.get("Author").get(0);
+            language = Languages.valueOf(attributes.get("Language").get(0).toUpperCase());
+            category = Categories.valueOf(attributes.get("Category").get(0).toUpperCase());
+            title = attributes.get("Title").get(0);
+            length = Integer.parseInt(attributes.get("Length").get(0));
+            id = Integer.parseInt(attributes.get("ID").get(0));
+            content = attributes.get("Content").get(0);
 
         }
         catch(IndexOutOfBoundsException e){
