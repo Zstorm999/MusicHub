@@ -21,9 +21,12 @@ public class ConsoleApplication {
     public void init(){
         app.loadAll();
 
+        ConsoleUserDisplay.sayHello();
+
     }
 
     public void update(){
+        ConsoleUserDisplay.displayMenu();
         mustEnd = true;
     }
 
@@ -32,8 +35,7 @@ public class ConsoleApplication {
      */
     public void end(){
         app.saveAll();
-
-
+        ConsoleUserDisplay.sayGoodbye();
     }
 
 }

@@ -40,8 +40,6 @@ public class Playlist implements AudioToXML{
         catch(IndexOutOfBoundsException e){
             e.printStackTrace();
         }
-
-        System.out.println(this);
     }
 
     public String toString(){

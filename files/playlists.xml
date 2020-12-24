@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Playlists>
+<playlists>
     <Playlist>
         <name>pl_0</name>
         <id>0</id>
@@ -12,4 +12,4 @@
         <name>pl_2</name>
         <id>2</id>
     </Playlist>
-</Playlists>
+</playlists>

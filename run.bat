@@ -1,1 +1,1 @@
-java -classpath .\bin musichub.main.MusicHubConsole
+java -classpath .\bin musichub.main.MusicHub
