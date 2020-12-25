@@ -4,6 +4,7 @@ import musichub.util.AudioXML;
 
 import java.util.LinkedList;
 
+import musichub.business.Album;
 import musichub.business.AudioBook;
 import musichub.business.AudioElement;
 import musichub.business.ElementNotFoundException;
@@ -13,26 +14,29 @@ import musichub.business.Song;
 
 public class Application {
 
-    private static AudioXML<Playlist> playlistsXML;
     private static AudioXML<Song> songsXML;
     private static AudioXML<AudioBook> audioBooksXML;
-    //TODO: AudioXML for albums
+    private static AudioXML<Album> albumsXML;
+    private static AudioXML<Playlist> playlistsXML;
 
-    private static LinkedList<Playlist> playlists;
+    
     private static LinkedList<Song> songs;
     private static LinkedList<AudioBook> audioBooks;
-    //TODO: LinkedList for albums
+    private static LinkedList<Album> albums;
+    private static LinkedList<Playlist> playlists;
 
     
 
     public Application(){
-        if(playlistsXML == null) playlistsXML = new AudioXML<>("./files/playlists.xml", Playlist.class);
         if(songsXML == null) songsXML = new AudioXML<>("./files/elements.xml", Song.class);
         if(audioBooksXML == null) audioBooksXML = new AudioXML<>("./files/elements.xml", AudioBook.class);
+        if(albums == null) albumsXML = new AudioXML<>("./files/albums.xml", Album.class);
+        if(playlistsXML == null) playlistsXML = new AudioXML<>("./files/playlists.xml", Playlist.class);
 
-        playlists = new LinkedList<>();
-        songs = new LinkedList<>();
-        audioBooks = new LinkedList<>();
+        if(songs == null) songs = new LinkedList<>();
+        if(audioBooks == null) audioBooks = new LinkedList<>();
+        if(playlists == null) playlists = new LinkedList<>();
+        if(albums == null) albums = new LinkedList<>();
 
     }
 
@@ -94,7 +98,7 @@ public class Application {
      * @return the song if found
      * @throws ElementNotFoundException if there is no song with such an id
      */
-    public static AudioElement getSongWithID(int id) throws ElementNotFoundException{
+    public static Song getSongWithID(int id) throws ElementNotFoundException{
         for(Song song : songs){
             if(song.getID() == id) return song;
         }

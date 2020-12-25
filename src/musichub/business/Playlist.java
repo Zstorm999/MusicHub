@@ -74,7 +74,7 @@ public class Playlist implements AudioToXML{
         return "Playlist "+ name + ", id "+ id;
     }
 
-    public void add(Song elt){
+    public void add(AudioElement elt){
 
         if(elt == null) System.out.println("Element is null");
         try{
