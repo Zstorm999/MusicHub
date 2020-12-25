@@ -1,5 +1,7 @@
 package musichub.business;
 
+import java.util.List;
+
 import musichub.util.AudioToXML;
 
 /**
@@ -33,6 +35,25 @@ public abstract class AudioElement implements AudioToXML{
         this.length = length;
         this.id = id;
         this.content = content;
+    }
+
+    public int getID(){
+        return id;
+    }
+
+    /**
+     * Returns the first element having a title passed as parameter in a list
+     * @param title title to search for
+     * @param list the list to search in
+     * @return the element if found
+     * @throws ElementNotFoundException if the element with given title was not found in the list
+     */
+    public static AudioElement getElementWithTitle(String title, List<AudioElement> list) throws ElementNotFoundException{
+        for(AudioElement elt : list){
+            if(elt.title == title) return elt;
+        }
+
+        throw new ElementNotFoundException("Unable to find AudioElement with title: " + title + " in the list given");
     }
 
 }

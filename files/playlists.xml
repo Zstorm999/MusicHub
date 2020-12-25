@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <playlists>
     <Playlist>
-        <name>pl_0</name>
-        <id>0</id>
-    </Playlist>
-    <Playlist>
-        <name>pl_1</name>
-        <id>1</id>
-    </Playlist>
-    <Playlist>
-        <name>pl_2</name>
-        <id>2</id>
+        <Element>0</Element>
+        <Element>1</Element>
+        <ID>0</ID>
+        <Name>Test</Name>
     </Playlist>
 </playlists>
