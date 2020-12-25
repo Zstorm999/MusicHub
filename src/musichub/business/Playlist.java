@@ -26,22 +26,22 @@ public class Playlist implements AudioToXML{
         list = new LinkedList<>();
     }
 
-    public Map<String, List<String>> save(){
-        HashMap<String, List<String>> attributes = new HashMap<>();
-
-        attributes.put("Name", AudioToXML.toList(name));
-        attributes.put("ID", AudioToXML.toList(Integer.toString(id)));
-
-        LinkedList<String> idList = new LinkedList<>();
-
-        for(AudioElement elt : list){
-            idList.add(Integer.toString(elt.id));
-        }
-        attributes.put("Element", idList);
-
-        return attributes;
+    public List<AudioElement> getElementsList(){
+        return list;
     }
 
+    public void add(AudioElement elt){
+        try{
+            list.add(elt);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public String toString(){
+        return "Playlist "+ name + ", id "+ id;
+    }
 
     public void load(Map<String, List<String>> attributes){
         try{
@@ -70,28 +70,27 @@ public class Playlist implements AudioToXML{
         }
     }
 
-    public String toString(){
-        return "Playlist "+ name + ", id "+ id;
-    }
+    public Map<String, List<String>> save(){
+        HashMap<String, List<String>> attributes = new HashMap<>();
 
-    public void add(AudioElement elt){
+        attributes.put("Name", AudioToXML.toList(name));
+        attributes.put("ID", AudioToXML.toList(Integer.toString(id)));
 
-        if(elt == null) System.out.println("Element is null");
-        try{
-            list.add(elt);
+        LinkedList<String> idList = new LinkedList<>();
+
+        for(AudioElement elt : list){
+            idList.add(Integer.toString(elt.id));
         }
-        catch(Exception e){
-            e.printStackTrace();
-        }
+        attributes.put("Element", idList);
+
+        return attributes;
     }
 
-    public List<AudioElement> getElementsList(){
-        return list;
-    }
+    
 
     /**
      * Returns the first playlist having a name passed as parameter in a list
-     * @param title name to search for
+     * @param name name to search for
      * @param list the list to search in
      * @return the element if found
      * @throws ElementNotFoundException if the playlist with given name was not found in the list

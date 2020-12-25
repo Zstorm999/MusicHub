@@ -51,6 +51,7 @@ public class Application {
         songsXML.loadXML(songs);
         audioBooksXML.loadXML(audioBooks);
 
+        albumsXML.loadXML(albums);
         playlistsXML.loadXML(playlists);
 
 
@@ -68,10 +69,12 @@ public class Application {
     }
 
     public void saveAll(){
-        playlistsXML.saveXML(playlists, "playlists", true);
-
         songsXML.saveXML(songs, "audio", true);
+        //audiobooks are the only ones to not overwrite, because they are stored in the same file as songs
         audioBooksXML.saveXML(audioBooks, "audio", false);
+
+        albumsXML.saveXML(albums, "albums", true);
+        playlistsXML.saveXML(playlists, "playlists", true);
     }
 
     /**

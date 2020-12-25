@@ -20,6 +20,7 @@ import org.xml.sax.SAXException;
 
 /**
  * Handles all XML-related manipulation for objects implementing the AudioToXML interface.
+ * @param <T> the type of data that will be written to the XML file. It must implement the AudioToXML interface, and also have a constructor with 0 arguments
  * @see AudioToXML
  * @author Thomas Archambeau, Eléonore Vaisaire
  */
@@ -79,7 +80,7 @@ public class AudioXML<T extends AudioToXML>{
     /**
      * Loads a list of elements from an XML file. <br>
      * <br>
-     * The list can be empty at the beginning: take care that this function does not check for duplicates, 
+     * The list can be empty at the beginning: be careful that this function does not check for duplicates, 
      * and will thus append the elements extracted from the XML file at the end of the already existing list.
      * 
      * @param audioElements a list of elements to be loaded from the file
