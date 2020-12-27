@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<albums>
+    <Album>
+        <Artist>Someone</Artist>
+        <Element>0</Element>
+        <Element>1</Element>
+        <Title>Test</Title>
+        <ID>0</ID>
+        <Date>15/12/2020</Date>
+    </Album>
+</albums>

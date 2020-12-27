@@ -56,6 +56,10 @@ public class Song extends AudioElement{
         return gen.toString();
     }
 
+    public int getLength(){
+        return this.length;
+    }
+
     public String toString(){
         String result = null;
         result = artist + " " + gen + " " + title + " " + length + " " + id + " " + content;

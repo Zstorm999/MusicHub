@@ -54,16 +54,17 @@ public class Application {
         albumsXML.loadXML(albums);
         playlistsXML.loadXML(playlists);
 
+        //albums.add(new Album("Test", "Someone", 0, new Date(System.currentTimeMillis() )));
 
-        playlists.add(new Playlist("Test", 0));
+        //playlists.add(new Playlist("Test", 0));
 
-        try{
-            Playlist.getPlaylistWithTitle("Test", playlists).add(songs.get(0));
-            Playlist.getPlaylistWithTitle("Test", playlists).add(songs.get(1));
+        /*try{
+            Album.getAlbumWithTitle("Test", albums).add(songs.get(0));
+            Album.getAlbumWithTitle("Test", albums).add(songs.get(1));
         }
         catch(ElementNotFoundException e){
             e.printStackTrace();
-        }
+        }*/
 
 
     }
