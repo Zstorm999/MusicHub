@@ -63,7 +63,7 @@ public class Album implements AudioToXML{
             id = Integer.parseInt(attributes.get("ID").get(0));
             date = dateFormat.parse(attributes.get("Date").get(0));
 
-            for (String id : attributes.get("ID")) {
+            for (String id : attributes.get("Element")) {
                 list.add(Application.getSongWithID(Integer.parseInt(id)));                
             }
 

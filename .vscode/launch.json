@@ -6,18 +6,10 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Launch MusicHub",
-            "request": "launch",
-            "mainClass": "musichub.main.MusicHub",
-            "projectName": "Project_ae18a149"
-        },
-        {
-            "type": "java",
             "name": "Launch MusicHubConsole",
             "request": "launch",
             "mainClass": "musichub.main.MusicHub",
-            "projectName": "Project_ae18a149",
-            "stopOnEntry": true
+            "stopOnEntry": false
         }
     ]
 }
