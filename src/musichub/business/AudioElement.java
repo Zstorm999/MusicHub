@@ -40,6 +40,9 @@ public abstract class AudioElement implements AudioToXML{
     public int getID(){
         return id;
     }
+    public int getLength(){ return length;}
+    public String getTitle(){ return title;}
+    public String getContent(){ return content;}
 
     /**
      * Returns the first element having a title passed as parameter in a list

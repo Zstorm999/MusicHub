@@ -109,4 +109,89 @@ public class Application {
 
         throw new ElementNotFoundException("There is no Song or AudioBook with the corresponding ID: " + Integer.toString(id));
     }
+
+    public int createNewId(int elm){
+        int id = 0;
+        //if the element is a song or a book
+        if(elm == 1) {
+            for (Song song : songs) {
+                if (id <= song.getID()) {
+                    id = song.getID();
+                }
+            }
+            for(AudioBook book : audioBooks){
+                if(id <= book.getID()){
+                    id = book.getID();
+                }
+            }
+        }
+        //if the element is an album
+        else if(elm == 2){
+            for(Album album : albums){
+                if(id <= album.getId()){
+                    id = album.getId();
+                }
+            }
+        }
+        id++;
+        return id;
+    }
+
+    public void addAudioBook(AudioBook book){
+        audioBooks.add(book);
+    }
+
+    public void addSong(Song song){
+        songs.add(song);
+    }
+
+    public void addAlbum(Album album){
+        albums.add(album);
+    }
+
+    public void addSongToAlbum(String songTitle, String albumTitle) throws ElementNotFoundException{
+        Song tmpSong = null;
+        Album tmpAlbum = null;
+
+        for (Song song : songs) {
+            if (songTitle.equals(song.getTitle())) {
+                tmpSong = song;
+            }
+        }
+        for (Album album : albums) {
+            if (albumTitle.equals(album.getTitle())) {
+                tmpAlbum = album;
+            }
+        }
+        //tmpAlbum.getAlbumWithTitle(albumTitle, albums);
+        assert tmpAlbum != null;
+        tmpAlbum.add(tmpSong);
+    }
+
+    public void createPlaylist(String name){
+        int id = 0;
+        for(Playlist pl : playlists){
+            if(id <= pl.getId()){
+                id = pl.getId();
+            }
+        }
+        id++;
+        Playlist newPl = new Playlist(name, id);
+        playlists.add(newPl);
+    }
+
+    public void deletePlaylist(String name) throws ElementNotFoundException{
+        Playlist tmp = null;
+        for(Playlist pl : playlists){
+            if(name.equals(pl.getName())){
+                tmp = pl;
+            }
+        }
+        //tmp.getPlaylistWithTitle(name, playlists);
+        if(tmp != null){ playlists.remove(tmp);}
+    }
+
+    public void help(){
+
+    }
 }

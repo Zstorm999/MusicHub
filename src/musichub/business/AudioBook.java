@@ -47,7 +47,7 @@ public class AudioBook extends AudioElement{
      * Returns the author of the book
      * @return the author of the book
      */
-    public String authorToString(){
+    public String getAuthor(){
         return author;
     }
 
@@ -55,24 +55,28 @@ public class AudioBook extends AudioElement{
      * Returns the language of the book
      * @return the language of the book
      */
-    public String languageToString(){
-        return language.toString();
+    public Languages getLanguage(){
+        return language;
     }
-
 
     /**
      * Returns the category of the book
      * @return the category of the book
      */
-    public String categoryToString(){
-        return category.toString();
-    }
+    public Categories getCategory(){ return category; }
 
+    /**
+     * Returns a complete string with all the attributes
+     * @return a complete string with all the attributes
+     */
     public String toString(){
         String result = author + " " + language + " " + category + " " + title + " " + length + " " + id + " " + content;
         return result;
     }
 
+    /**
+     * @return
+     */
     public Map<String, List<String>> save(){
         HashMap<String, List<String>> attributes = new HashMap<>();
 
@@ -87,6 +91,9 @@ public class AudioBook extends AudioElement{
         return attributes;
     }
 
+    /**
+     * @param attributes a map of all the attributes, mapped by name
+     */
     public void load(Map<String, List<String>> attributes){
         try{
             author = attributes.get("Author").get(0);

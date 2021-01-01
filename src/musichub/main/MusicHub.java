@@ -1,12 +1,15 @@
 package musichub.main;
 
+import musichub.business.ElementNotFoundException;
 import musichub.main.consoleui.ConsoleApplication;
+
+import java.text.ParseException;
 
 public class MusicHub {
 
     ConsoleApplication app;
 
-    private MusicHub(){
+    private MusicHub() throws ElementNotFoundException, ParseException {
         app = new ConsoleApplication();
 
         app.init();
@@ -19,7 +22,7 @@ public class MusicHub {
         
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ElementNotFoundException, ParseException {
         new MusicHub();
     }
 }

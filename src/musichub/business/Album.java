@@ -38,6 +38,10 @@ public class Album implements AudioToXML{
 
     }
 
+    public int getId(){
+        return id;
+    }
+
     public int getLength(){
         int length = 0;
         for(Song elt : list){
@@ -45,6 +49,10 @@ public class Album implements AudioToXML{
         }
 
         return length;
+    }
+
+    public String getTitle(){
+        return title;
     }
 
     public void add(Song song){

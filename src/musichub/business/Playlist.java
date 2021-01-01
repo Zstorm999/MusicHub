@@ -26,9 +26,22 @@ public class Playlist implements AudioToXML{
         list = new LinkedList<>();
     }
 
+    /**
+     * @return a list of AudioElement
+     */
     public List<AudioElement> getElementsList(){
         return list;
     }
+
+    /**
+     * @return the name of the playlist
+     */
+    public String getName(){ return name;}
+
+    /**
+     * @return the playlist's id
+     */
+    public int getId(){ return id;}
 
     public void add(AudioElement elt){
         try{
@@ -40,8 +53,7 @@ public class Playlist implements AudioToXML{
     }
 
     public String toString(){
-        return "Playlist "+ name + ", id "+ id;
-    }
+        return "Playlist "+ name + ", id "+ id+ ", Elements " + list.toString(); }
 
     public void load(Map<String, List<String>> attributes){
         try{
