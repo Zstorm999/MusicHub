@@ -44,7 +44,7 @@ public class Song extends AudioElement{
      * Returns the artist 
      * @return the artist
      */
-    public String artistToString(){
+    public String getArtist(){
         return artist;
     }
 
@@ -52,8 +52,8 @@ public class Song extends AudioElement{
      * Returns the genre of the song
      * @return the genre of the song
      */
-    public String genreToString(){
-        return gen.toString();
+    public Genres getGen(){
+        return gen;
     }
 
     public int getLength(){
