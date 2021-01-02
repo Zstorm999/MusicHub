@@ -8,6 +8,13 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Represents a pllaylist, gathering a list of songs or audio books
+ * @see Song
+ * @see AudioBook
+ * @see AudioElement
+ * @author Thomass Archambeau, Eléonore Vaissaire
+ */
 public class Playlist implements AudioToXML{
     
     private String name;
@@ -15,10 +22,17 @@ public class Playlist implements AudioToXML{
 
     private List<AudioElement> list;
 
-    //this is mandatory for the AudioToXML interface to work correctly
+    /**
+     * Empty constructor, mandatory for the AudioToXML interface to work correctly
+     */
     public Playlist(){
     }
 
+    /**
+     * Creates a new playlist
+     * @param name name
+     * @param id id
+     */
     public Playlist(String name, int id){
         this.name = name;
         this.id = id;
@@ -26,10 +40,30 @@ public class Playlist implements AudioToXML{
         list = new LinkedList<>();
     }
 
+    /**
+     * Returns a list of AudioElement
+     * @return a list of AudioElement
+     */
     public List<AudioElement> getElementsList(){
         return list;
     }
 
+    /**
+     * Returns the name of the playlist
+     * @return the name of the playlist
+     */
+    public String getName(){ return name;}
+
+    /**
+     * Returns the playlist's id
+     * @return the playlist's id
+     */
+    public int getId(){ return id;}
+
+    /**
+     * Add a new audio element to the playlist
+     * @param elt the element to add
+     */
     public void add(AudioElement elt){
         try{
             list.add(elt);
@@ -39,9 +73,12 @@ public class Playlist implements AudioToXML{
         }
     }
 
+    /**
+     * Returns a complete string with the attributes of the playlist
+     * @return a complete string with the attributes of the playlist
+     */
     public String toString(){
-        return "Playlist "+ name + ", id "+ id;
-    }
+        return "Playlist : "+ name + ", Elements " + list.toString(); }
 
     public void load(Map<String, List<String>> attributes){
         try{

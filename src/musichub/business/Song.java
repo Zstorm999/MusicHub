@@ -14,7 +14,7 @@ import java.util.List;
  * @see Genres
  * @author Thomas Archambeau, Eléonore Vaissaire
  */
-public class Song extends AudioElement{
+public class Song extends AudioElement implements Comparable<Song>{
     private String artist;
     private Genres gen;
 
@@ -40,11 +40,16 @@ public class Song extends AudioElement{
         this.gen = gen;
     }
 
+
+    public int compareTo(Song song) {
+        return this.gen.toString().compareTo(song.gen.toString());
+    }
+
     /**
      * Returns the artist 
      * @return the artist
      */
-    public String artistToString(){
+    public String getArtist(){
         return artist;
     }
 
@@ -52,17 +57,25 @@ public class Song extends AudioElement{
      * Returns the genre of the song
      * @return the genre of the song
      */
-    public String genreToString(){
-        return gen.toString();
+    public Genres getGen(){
+        return gen;
     }
 
+    /**
+     * Returns the total length in seconds
+     * @return the total length in seconds
+     */
     public int getLength(){
         return this.length;
     }
 
+    /**
+     * Returns a complete string with the attributes of the song
+     * @return a complete string with the attributes of the song
+     */
     public String toString(){
         String result = null;
-        result = artist + " " + gen + " " + title + " " + length + " " + id + " " + content;
+        result = artist + ", " + gen + ", " + title + ", " + length + "s, " + content + "; ";
         return result;
     }
 

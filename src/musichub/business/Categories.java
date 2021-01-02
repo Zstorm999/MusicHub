@@ -10,10 +10,18 @@ public enum Categories{
 
     private final String str;
 
+    /**
+     * Associates a string to the category
+     * @param str the string to associate
+     */
     private Categories(String str){
         this.str = str;
     }
 
+    /**
+     * Returns the string associated
+     * @return the string associated
+     */
     public String toString(){
         return str;
     }

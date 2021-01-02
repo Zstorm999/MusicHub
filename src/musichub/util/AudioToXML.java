@@ -7,7 +7,7 @@ import java.util.List;
  * Represents an object that can be loaded from and to XML via the AudioXML class. <br>
  * Class implementing this interface should always have a constructor with 0 arguments.
  * 
- * @author Thomas Archambeau
+ * @author Thomas Archambeau, Eléonore Vaissaire
  */
 public interface AudioToXML {
 
