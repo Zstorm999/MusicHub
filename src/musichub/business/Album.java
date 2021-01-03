@@ -12,7 +12,8 @@ import musichub.main.Application;
 import musichub.util.AudioToXML;
 
 /**
- * Represents an album
+ * Represents an album. <br>
+ * An album contains songs.
  * @see Song
  * @see Genres
  * @author Thomas Archambeau, Eléonore Vaissaire
@@ -58,8 +59,7 @@ public class Album implements AudioToXML, Comparable<Album>{
     /**
      * Compares the current album and another one, returns 1 or -1
      * @param album the album to compare
-     * @return 1 if the album to compare is created before the current one.
-     * @return -1 else
+     * @return 1 if the album to compare is created before the current one, -1 otherwise
      */
     public int compareTo(Album album){
         if(this.date.after(album.date)){

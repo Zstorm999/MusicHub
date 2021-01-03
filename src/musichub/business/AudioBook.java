@@ -114,6 +114,7 @@ public class AudioBook extends AudioElement implements Comparable<AudioBook>{
     }
 
     /**
+     * Compare the audioBook to another (by author)
      * @param book the book to compare (by author)
      * @return the result of the comparison of author of both books
      */

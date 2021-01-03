@@ -53,8 +53,8 @@ public class ConsoleApplication {
 
     /**
      * Method that handle all the possible functions and the user's choice
-     * @throws ElementNotFoundException
-     * @throws ParseException
+     * @throws ElementNotFoundException if an element was not found (it can be a playlist, an album or an AudioElement)
+     * @throws ParseException if a reading error occurs
      */
     public void update() throws ElementNotFoundException, ParseException {
 

@@ -9,7 +9,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Represents a pllaylist, gathering a list of songs or audio books
+ * Represents a playlist. <br>
+ * A playlist contains songs and audiobooks, and any other audio elements
  * @see Song
  * @see AudioBook
  * @see AudioElement

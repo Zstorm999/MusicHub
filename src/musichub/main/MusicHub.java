@@ -32,10 +32,6 @@ public class MusicHub {
         
     }
 
-    /**
-     * Main function that will load and run the program
-     * @param args a string entered next to the file MusicHub.java by the user via the console to run it
-     */
     public static void main(String[] args) {
         new MusicHub();
     }
