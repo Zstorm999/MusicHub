@@ -3,52 +3,307 @@
         
     <Song>
                 
-        <Artist>Test</Artist>
+        <Artist>Bill Haley</Artist>
                 
-        <Length>120</Length>
+        <Length>131</Length>
                 
-        <Content>nothing</Content>
+        <Content>/home/usr/music/rockaroundtheclock.mp3</Content>
                 
-        <Title>test as well</Title>
+        <Title>Rock Around The Clock</Title>
                 
         <Genre>Rock</Genre>
                 
-        <ID>0</ID>
+        <ID>1</ID>
             
     </Song>
         
     <Song>
                 
-        <Artist>Test2</Artist>
+        <Artist>Guns N' Roses</Artist>
+                
+        <Length>336</Length>
+                
+        <Content>/home/usr/music/knockingonheavensdoor.mp3</Content>
+                
+        <Title>Knockin' On Heaven's Door</Title>
+                
+        <Genre>Rock</Genre>
+                
+        <ID>2</ID>
+            
+    </Song>
+        
+    <Song>
+                
+        <Artist>The Cranberries</Artist>
+                
+        <Length>306</Length>
+                
+        <Content>/home/usr/music/zombie.mp3</Content>
+                
+        <Title>Zombie</Title>
+                
+        <Genre>Rock</Genre>
+                
+        <ID>3</ID>
+            
+    </Song>
+        
+    <Song>
+                
+        <Artist>Panic! At The Disco</Artist>
+                
+        <Length>197</Length>
+                
+        <Content>/home/usr/music/ladevotee.mp3</Content>
+                
+        <Title>LA Devotee</Title>
+                
+        <Genre>Pop</Genre>
+                
+        <ID>4</ID>
+            
+    </Song>
+        
+    <Song>
+                
+        <Artist>Panic! At The Disco</Artist>
+                
+        <Length>204</Length>
+                
+        <Content>/home/usr/music/deathofabachelor.mp3</Content>
+                
+        <Title>Death Of A Bachelor</Title>
+                
+        <Genre>Pop</Genre>
+                
+        <ID>5</ID>
+            
+    </Song>
+        
+    <Song>
+                
+        <Artist>Panic! At The Disco</Artist>
                 
         <Length>254</Length>
                 
-        <Content>nothing too</Content>
+        <Content>/home/usr/music/goldendays.mp3</Content>
                 
-        <Title>test as well</Title>
+        <Title>Golden Days</Title>
                 
-        <Genre>Hip Hop</Genre>
+        <Genre>Pop</Genre>
                 
-        <ID>1</ID>
+        <ID>6</ID>
+            
+    </Song>
+        
+    <Song>
+                
+        <Artist>Duke Ellington &amp; John Coltrane</Artist>
+                
+        <Length>255</Length>
+                
+        <Content>/home/usr/music/inasentimentalmood.mp3</Content>
+                
+        <Title>In A Sentimental Mood</Title>
+                
+        <Genre>Jazz</Genre>
+                
+        <ID>7</ID>
+            
+    </Song>
+        
+    <Song>
+                
+        <Artist>Duke Ellington &amp; John Coltrane</Artist>
+                
+        <Length>283</Length>
+                
+        <Content>/home/usr/music/takethecoltrane.mp3</Content>
+                
+        <Title>Take The Coltrane</Title>
+                
+        <Genre>Jazz</Genre>
+                
+        <ID>8</ID>
+            
+    </Song>
+        
+    <Song>
+                
+        <Artist>Duke Ellington &amp; John Coltrane</Artist>
+                
+        <Length>320</Length>
+                
+        <Content>/home/usr/music/mylittlebrownbook.mp3</Content>
+                
+        <Title>My Little Brown Book</Title>
+                
+        <Genre>Jazz</Genre>
+                
+        <ID>9</ID>
+            
+    </Song>
+        
+    <Song>
+                
+        <Artist>Eminem</Artist>
+                
+        <Length>290</Length>
+                
+        <Content>/home/usr/music/withoutme.mp3</Content>
+                
+        <Title>Without Me</Title>
+                
+        <Genre>Rap</Genre>
+                
+        <ID>10</ID>
+            
+    </Song>
+        
+    <Song>
+                
+        <Artist>Eminem</Artist>
+                
+        <Length>340</Length>
+                
+        <Content>/home/usr/music/singforthemoment.mp3</Content>
+                
+        <Title>Sing For The Moment</Title>
+                
+        <Genre>Rap</Genre>
+                
+        <ID>11</ID>
+            
+    </Song>
+        
+    <Song>
+                
+        <Artist>Mozart</Artist>
+                
+        <Length>243</Length>
+                
+        <Content>/home/usr/music/turkishmarch.mp3</Content>
+                
+        <Title>Turkish March</Title>
+                
+        <Genre>Classic</Genre>
+                
+        <ID>15</ID>
+            
+    </Song>
+        
+    <Song>
+                
+        <Artist>Vivaldi</Artist>
+                
+        <Length>2520</Length>
+                
+        <Content>/home/usr/music/4seasons.mp3</Content>
+                
+        <Title>4 Seasons</Title>
+                
+        <Genre>Classic</Genre>
+                
+        <ID>16</ID>
+            
+    </Song>
+        
+    <Song>
+                
+        <Artist>Wagner</Artist>
+                
+        <Length>300</Length>
+                
+        <Content>/home/usr/music/rideofthevalkyries.mp3</Content>
+                
+        <Title>Ride Of The Valkyries</Title>
+                
+        <Genre>Classic</Genre>
+                
+        <ID>17</ID>
             
     </Song>
     
     <AudioBook>
+        <Category>Documentary</Category>
+        <Language>French</Language>
+        <Length>3000</Length>
+        <Content>/home/usr/books/lageopolitiqueen1h.mp3</Content>
+        <Author>Alexandre Defay</Author>
+        <Title>La geopolitique en 1 heure</Title>
+        <ID>21</ID>
+    </AudioBook>
+    <AudioBook>
+        <Category>Novel</Category>
+        <Language>English</Language>
+        <Length>29881</Length>
+        <Content>/home/usr/books/hp1_en.mp3</Content>
+        <Author>J.K.Rowling</Author>
+        <Title>Harry Potter And The Philosopher's Stone</Title>
+        <ID>12</ID>
+    </AudioBook>
+    <AudioBook>
         <Category>Novel</Category>
         <Language>French</Language>
-        <Length>9</Length>
-        <Content>work in progress</Content>
-        <Author>Thomas</Author>
-        <Title>Tordan</Title>
-        <ID>0</ID>
+        <Length>29881</Length>
+        <Content>/home/usr/books/hp1_fr.mp3</Content>
+        <Author>J.K.Rowling</Author>
+        <Title>Harry Potter a l'Ecole des Sorciers</Title>
+        <ID>13</ID>
+    </AudioBook>
+    <AudioBook>
+        <Category>Novel</Category>
+        <Language>Italian</Language>
+        <Length>29881</Length>
+        <Content>/home/usr/books/hp1_it.mp3</Content>
+        <Author>J.K.Rowling</Author>
+        <Title>Harry Potter e la Pietra Filosofale</Title>
+        <ID>14</ID>
+    </AudioBook>
+    <AudioBook>
+        <Category>Novel</Category>
+        <Language>Spanish</Language>
+        <Length>29881</Length>
+        <Content>/home/usr/books/hp1_es.mp3</Content>
+        <Author>J.K.Rowling</Author>
+        <Title>Harry Potter y la Piedra Filosofal</Title>
+        <ID>18</ID>
+    </AudioBook>
+    <AudioBook>
+        <Category>Novel</Category>
+        <Language>German</Language>
+        <Length>29881</Length>
+        <Content>/home/usr/books/hp1_de.mp3</Content>
+        <Author>J.K.Rowling</Author>
+        <Title>Harry Potter und der Stein der Weisen</Title>
+        <ID>19</ID>
+    </AudioBook>
+    <AudioBook>
+        <Category>Theater</Category>
+        <Language>French</Language>
+        <Length>4800</Length>
+        <Content>/home/usr/books/lesfourberiesdescapin</Content>
+        <Author>Moliere</Author>
+        <Title>Les Fourberies de Scapin</Title>
+        <ID>23</ID>
     </AudioBook>
     <AudioBook>
         <Category>Youth</Category>
         <Language>English</Language>
-        <Length>7</Length>
-        <Content>work in progress</Content>
-        <Author>El'</Author>
-        <Title>Well...</Title>
-        <ID>1</ID>
+        <Length>3960</Length>
+        <Content>/home/usr/books/fantasticmisterfox.mp3</Content>
+        <Author>Roald Dahl</Author>
+        <Title>Fantastic Mister Fox</Title>
+        <ID>20</ID>
+    </AudioBook>
+    <AudioBook>
+        <Category>Speech</Category>
+        <Language>English</Language>
+        <Length>34440</Length>
+        <Content>/home/usr/books/barackobamapresidency.mp3</Content>
+        <Author>The Speech Resource Company</Author>
+        <Title>Barack Obama Presidency</Title>
+        <ID>22</ID>
     </AudioBook>
 </audio>

@@ -1,11 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <albums>
     <Album>
-        <Artist>Someone</Artist>
-        <Element>0</Element>
-        <Element>1</Element>
-        <Title>Test</Title>
-        <ID>0</ID>
-        <Date>15/12/2020</Date>
+        <Artist>Panic! At The Disco</Artist>
+        <Element>4</Element>
+        <Element>5</Element>
+        <Element>6</Element>
+        <Title>Death Of A Bachelor</Title>
+        <ID>1</ID>
+        <Date>15/01/2016</Date>
+    </Album>
+    <Album>
+        <Artist>Eminem</Artist>
+        <Element>10</Element>
+        <Element>11</Element>
+        <Title>The Eminem Show</Title>
+        <ID>3</ID>
+        <Date>26/05/2002</Date>
+    </Album>
+    <Album>
+        <Artist>Duke Ellington &amp; John Coltrane</Artist>
+        <Element>7</Element>
+        <Element>8</Element>
+        <Element>9</Element>
+        <Title>Duke Ellington &amp; John Coltrane</Title>
+        <ID>2</ID>
+        <Date>26/05/2002</Date>
     </Album>
 </albums>

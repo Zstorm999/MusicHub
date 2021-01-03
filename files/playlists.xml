@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <playlists>
     <Playlist>
-        <Element>0</Element>
-        <Element>1</Element>
-        <ID>0</ID>
-        <Name>Test</Name>
+        <Element>12</Element>
+        <Element>13</Element>
+        <Element>14</Element>
+        <Element>18</Element>
+        <Element>19</Element>
+        <ID>1</ID>
+        <Name>Harry Potter in all languages</Name>
+    </Playlist>
+    <Playlist>
+        <Element>2</Element>
+        <Element>3</Element>
+        <ID>2</ID>
+        <Name>Best Musics</Name>
+    </Playlist>
+    <Playlist>
+        <Element>16</Element>
+        <Element>22</Element>
+        <ID>3</ID>
+        <Name>Relaxing</Name>
     </Playlist>
 </playlists>
