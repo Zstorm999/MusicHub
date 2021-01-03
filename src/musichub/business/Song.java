@@ -40,7 +40,10 @@ public class Song extends AudioElement implements Comparable<Song>{
         this.gen = gen;
     }
 
-
+    /**
+     * Compares a song by Genre
+     * @return the comparison between the genres, based on their representative strings
+     */
     public int compareTo(Song song) {
         return this.gen.toString().compareTo(song.gen.toString());
     }

@@ -10,10 +10,7 @@ public enum Languages {
 
     private String str;
 
-    /**
-     * Associates a string to a language
-     * @param str the string to associate
-     */
+    
     private Languages(String str){
         this.str = str;
     }

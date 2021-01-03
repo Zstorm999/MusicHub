@@ -9,7 +9,7 @@ public class ElementNotFoundException extends Exception{
     static final long serialVersionUID = 0;
 
     /**
-     * Empty constructor, because the only attribute is fixed
+     * Empty constructor
      */
     public ElementNotFoundException(){
 

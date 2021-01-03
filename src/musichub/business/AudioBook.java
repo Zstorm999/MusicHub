@@ -74,9 +74,7 @@ public class AudioBook extends AudioElement implements Comparable<AudioBook>{
         return result;
     }
 
-    /**
-     * @return
-     */
+    
     public Map<String, List<String>> save(){
         HashMap<String, List<String>> attributes = new HashMap<>();
 
@@ -91,9 +89,7 @@ public class AudioBook extends AudioElement implements Comparable<AudioBook>{
         return attributes;
     }
 
-    /**
-     * @param attributes a map of all the attributes, mapped by name
-     */
+    
     public void load(Map<String, List<String>> attributes){
         try{
             author = attributes.get("Author").get(0);
@@ -118,8 +114,8 @@ public class AudioBook extends AudioElement implements Comparable<AudioBook>{
     }
 
     /**
-     * @param book the book to compare
-     * @return
+     * @param book the book to compare (by author)
+     * @return the result of the comparison of author of both books
      */
     public int compareTo(AudioBook book) {
         return this.author.compareTo(book.author);

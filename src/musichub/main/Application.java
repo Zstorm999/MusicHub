@@ -53,34 +53,14 @@ public class Application {
     }
 
     /**
-     * Load in the different lists all the data from xml files, at the starting of the program
+     * Loads in the different lists all the data from xml files, at the starting of the program
      */
     public void loadAll(){
-        
-        //songs.add(new Song("Test", Genres.ROCK, "test as well", 120, 0, "nothing"));
-        //songs.add(new Song("Test2", Genres.HIPHOP, "test as well", 254, 1, "nothing too"));
-
-        //audioBooks.add(new AudioBook("Moi", Languages.FRENCH, Categories.NOVEL, "Tordan", 15, 0, "nothing yet"));
-        //audioBooks.add(new AudioBook("El'", Languages.ENGLISH, Categories.YOUTH, "Well...", 7, 1, "work in progress"));
-
         songsXML.loadXML(songs);
         audioBooksXML.loadXML(audioBooks);
 
         albumsXML.loadXML(albums);
         playlistsXML.loadXML(playlists);
-
-        //albums.add(new Album("Test", "Someone", 0, new Date(System.currentTimeMillis() )));
-
-        //playlists.add(new Playlist("Test", 0));
-
-        /*try{
-            Album.getAlbumWithTitle("Test", albums).add(songs.get(0));
-            Album.getAlbumWithTitle("Test", albums).add(songs.get(1));
-        }
-        catch(ElementNotFoundException e){
-            e.printStackTrace();
-        }*/
-
 
     }
 

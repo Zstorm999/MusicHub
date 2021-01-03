@@ -26,6 +26,7 @@ public class Playlist implements AudioToXML{
      * Empty constructor, mandatory for the AudioToXML interface to work correctly
      */
     public Playlist(){
+        list = new LinkedList<>();
     }
 
     /**
@@ -84,8 +85,6 @@ public class Playlist implements AudioToXML{
         try{
             name = attributes.get("Name").get(0);
             id = Integer.parseInt(attributes.get("ID").get(0));
-
-            list = new LinkedList<>();
 
             List<String> idList = attributes.get("Element");
             for(String id : idList){

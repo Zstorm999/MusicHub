@@ -10,10 +10,7 @@ public enum Genres {
 
     private String str;
 
-    /**
-     * Associates a string to a genre
-     * @param str the string to associate
-     */
+    
     private Genres(String str){
         this.str = str;
     }

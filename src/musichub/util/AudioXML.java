@@ -178,8 +178,8 @@ public class AudioXML<T extends AudioToXML>{
             //go through the map
             for(Iterator<String> it_key = keySet.iterator(); it_key.hasNext(); ){
                 String key = it_key.next();
+
                 
-                //TODO: make a better way of listing values inside XML
                 //create all elements in the XML
                 for(String obj : attributes.get(key)){
                     Element attribute = document.createElement(key);
