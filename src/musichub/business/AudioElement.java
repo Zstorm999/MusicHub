@@ -37,9 +37,31 @@ public abstract class AudioElement implements AudioToXML{
         this.content = content;
     }
 
+    /**
+     * Returns the element's ID
+     * @return the element's ID
+     */
     public int getID(){
         return id;
     }
+
+    /**
+     * Returns the total length in seconds
+     * @return the total length in seconds
+     */
+    public int getLength(){ return length;}
+
+    /**
+     * Returns the title
+     * @return the title
+     */
+    public String getTitle(){ return title;}
+
+    /**
+     * Returns the content (the path to the file)
+     * @return the content (the path to the file)
+     */
+    public String getContent(){ return content;}
 
     /**
      * Returns the first element having a title passed as parameter in a list
@@ -48,7 +70,7 @@ public abstract class AudioElement implements AudioToXML{
      * @return the element if found
      * @throws ElementNotFoundException if the element with given title was not found in the list
      */
-    public static AudioElement getElementWithTitle(String title, List<AudioElement> list) throws ElementNotFoundException{
+    public static AudioElement getElementWithTitle(String title, List<? extends AudioElement> list) throws ElementNotFoundException{
         for(AudioElement elt : list){
             if(elt.title == title) return elt;
         }

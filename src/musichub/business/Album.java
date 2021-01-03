@@ -11,7 +11,13 @@ import java.util.Map;
 import musichub.main.Application;
 import musichub.util.AudioToXML;
 
-public class Album implements AudioToXML{ 
+/**
+ * Represents an album
+ * @see Song
+ * @see Genres
+ * @author Thomas Archambeau, Eléonore Vaissaire
+ */
+public class Album implements AudioToXML, Comparable<Album>{
     private String title;
     private String artist;
 
@@ -23,11 +29,21 @@ public class Album implements AudioToXML{
     private SimpleDateFormat dateFormat;
 
 
+    /**
+     * A constructor needed for the date and its format
+     */
     public Album(){
         dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         list = new LinkedList<>();
     }
 
+    /**
+     * Creates a new album
+     * @param title the title
+     * @param artist the artist
+     * @param id the id
+     * @param date the date of creation
+     */
     public Album(String title, String artist, int id, Date date){
         this();
 
@@ -38,6 +54,34 @@ public class Album implements AudioToXML{
 
     }
 
+
+    /**
+     * Compares the current album and another one, returns 1 or -1
+     * @param album the album to compare
+     * @return 1 if the album to compare is created before the current one.
+     * @return -1 else
+     */
+    public int compareTo(Album album){
+        if(this.date.after(album.date)){
+            return -1;
+        }
+        else {
+            return 1;
+        }
+    }
+
+    /**
+     * Returns the album's id
+     * @return album's id
+     */
+    public int getId(){
+        return id;
+    }
+
+    /**
+     * Returns the total length in seconds of the album
+     * @return the total length in seconds of the album
+     */
     public int getLength(){
         int length = 0;
         for(Song elt : list){
@@ -47,14 +91,45 @@ public class Album implements AudioToXML{
         return length;
     }
 
+    /**
+     * Returns the album's title
+     * @return the alum's title
+     */
+    public String getTitle(){
+        return title;
+    }
+
+    /**
+     * Add a song to the album
+     * @param song the song to add
+     */
     public void add(Song song){
         list.add(song);
     }
 
+    /**
+     * Returns a complete string with all the attributes
+     * @return a complete string with all the attributes
+     */
     public String toString(){
         return "Album: " + title + ", by: " + artist + ", published on " + date + "; total length: " + getLength() + "s.";
     }
 
+    /**
+     * Returns a list of all the songs in the album
+     * @return a list of all the songs in the album
+     */
+    public List<Song> getSongs(){
+        return list;
+    }
+
+    /**
+     * Returns the date of creation
+     * @return the date of creation
+     */
+    public Date getDate(){
+        return date;
+    }
 
     public void load(Map<String, List<String>> attributes){
         try{
