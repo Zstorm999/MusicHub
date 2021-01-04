@@ -1,6 +1,8 @@
 package musichub.main;
 
+import musichub.ui.UserApplication;
 import musichub.ui.consoleui.ConsoleUI;
+import musichub.ui.windowui.WindowUI;
 
 /**
  * Main class of the program
@@ -9,23 +11,27 @@ import musichub.ui.consoleui.ConsoleUI;
  */
 public class MusicHub {
 
-    ConsoleUI app;
+    UserApplication app;
 
     /**
      * Creates a new object of type MusicHub
      */
-    private MusicHub() {
-        app = new ConsoleUI();
+    private MusicHub(AppType type) {
+
+        switch (type){
+            case CONSOLE:
+                app = new ConsoleUI();
+                break;
+            case WINDOW:
+                app = new WindowUI();
+                break;
+        }
+
 
         app.init();
 
         while(!app.mustEnd()){
-            try{
-                app.update();
-            }
-            catch(Exception e){
-                e.printStackTrace();
-            }
+            app.update();
         }
 
         app.end();
@@ -33,6 +39,17 @@ public class MusicHub {
     }
 
     public static void main(String[] args) {
-        new MusicHub();
+
+        if (args[0].equals("-c")) {
+            new MusicHub(AppType.CONSOLE);
+        }
+        else{
+            new MusicHub(AppType.WINDOW);
+        }
+
+    }
+
+    private enum AppType{
+        CONSOLE(), WINDOW()
     }
 }
