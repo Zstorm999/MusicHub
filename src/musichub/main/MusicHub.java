@@ -1,21 +1,21 @@
 package musichub.main;
 
-import musichub.main.consoleui.ConsoleApplication;
+import musichub.ui.consoleui.ConsoleUI;
 
 /**
  * Main class of the program
- * @see musichub.main.consoleui.ConsoleApplication
+ * @see musichub.ui.consoleui.ConsoleUI
  * @author Thomas Archambeau, Eléonore Vaissaire
  */
 public class MusicHub {
 
-    ConsoleApplication app;
+    ConsoleUI app;
 
     /**
      * Creates a new object of type MusicHub
      */
     private MusicHub() {
-        app = new ConsoleApplication();
+        app = new ConsoleUI();
 
         app.init();
 

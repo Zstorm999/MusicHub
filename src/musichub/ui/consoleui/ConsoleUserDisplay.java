@@ -1,4 +1,4 @@
-package musichub.main.consoleui;
+package musichub.ui.consoleui;
 
 /**
  * Represents a class that only displays some messages at the console for the user's comfort
