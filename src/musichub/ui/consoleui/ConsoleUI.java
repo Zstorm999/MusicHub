@@ -41,10 +41,6 @@ public class ConsoleUI implements UserApplication {
         scan = new Scanner(System.in);
     }
 
-    /**
-     * Returns a boolean that indicates if the program has to stop
-     * @return a boolean that indicates if the program has to stop
-     */
     public boolean mustEnd(){
         return mustEnd;
     }
