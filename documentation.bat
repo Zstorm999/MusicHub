@@ -1,1 +1,0 @@
-javadoc -sourcepath src -d doc musichub.business musichub.util musichub.main musichub.ui.consoleui
