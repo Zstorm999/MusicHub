@@ -1,4 +1,6 @@
 musichub.business
 musichub.main
+musichub.ui
 musichub.ui.consoleui
+musichub.ui.windowui
 musichub.util
