@@ -1,5 +1,5 @@
 /**
- * Contains the main application
+ * Main application
  * @author Thomas Archambeau, Eléonore Vaissaire
  */
 

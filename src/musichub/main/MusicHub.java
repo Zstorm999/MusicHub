@@ -7,6 +7,7 @@ import musichub.ui.windowui.WindowUI;
 /**
  * Main class of the program
  * @see musichub.ui.consoleui.ConsoleUI
+ * @see musichub.ui.windowui.WindowUI
  * @author Thomas Archambeau, Eléonore Vaissaire
  */
 public class MusicHub {

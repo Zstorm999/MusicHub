@@ -1,5 +1,5 @@
 /**
- * Contains all the console interface-related classes
- * @author Thomas Archmabeau, Eléonore Vaissaire
+ * Console user interface
+ * @author Thomas Archambeau, Eléonore Vaissaire
  */
 package musichub.ui.consoleui;

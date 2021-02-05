@@ -91,7 +91,7 @@ public class Application {
             if(book.getID() == id) return book;
         }
 
-        throw new ElementNotFoundException("There is no Song or AudioBook with the corresponding ID: " + Integer.toString(id));
+        throw new ElementNotFoundException("There is no Song or AudioBook with the corresponding ID: " + id);
     }
 
     /**
@@ -105,7 +105,7 @@ public class Application {
             if(song.getID() == id) return song;
         }
 
-        throw new ElementNotFoundException("There is no Song or AudioBook with the corresponding ID: " + Integer.toString(id));
+        throw new ElementNotFoundException("There is no Song or AudioBook with the corresponding ID: " + id);
     }
 
 
@@ -256,25 +256,36 @@ public class Application {
         if(tmp != null){ playlists.remove(tmp);}
     }
 
-
+    /**
+     *
+     * @return a copy of the list of AudioBooks
+     */
     public List<AudioBook> getAudioBooks(){
-        return audioBooks;
+        return new LinkedList<>(audioBooks);
     }
 
+    /**
+     *
+     * @return a copy of th list of Songs
+     */
     public List<Song> getSongs(){
-        return songs;
+        return new LinkedList<>(songs);
     }
 
+    /**
+     *
+     * @return a copy of the list of Playlists
+     */
     public List<Playlist> getPlaylists(){
-        return playlists;
+        return new LinkedList<>(playlists);
     }
 
     /**
      * Returns a list of albums
-     * @return a list of albums
+     * @return a copy of the list of Albums
      */
     public List<Album> getAlbums(){
-        return albums;
+        return new LinkedList<>(albums);
     }
 
 }
