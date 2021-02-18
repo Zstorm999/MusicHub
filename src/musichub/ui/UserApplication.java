@@ -2,28 +2,12 @@ package musichub.ui;
 
 
 /**
- *
+ * Represents any user interface
  */
 public interface UserApplication {
 
     /**
-     * Put here everything that should be done on the application's startup
+     * Displays the user interface
      */
-    void init();
-
-    /**
-     * Put here everything to run continuously
-     */
-    void update();
-
-    /**
-     * Put here everything that should be done just before the application's end
-     */
-    void end();
-
-    /**
-     * Returns a boolean that indicates if the program has to stop
-     * @return a boolean that indicates if the program has to stop
-     */
-    boolean mustEnd();
+    void show();
 }

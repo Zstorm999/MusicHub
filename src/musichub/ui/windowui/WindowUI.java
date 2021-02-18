@@ -4,29 +4,13 @@ import musichub.ui.UserApplication;
 
 public class WindowUI implements UserApplication {
 
-    private boolean mustEnd;
 
     public WindowUI(){
-        mustEnd = true;
     }
 
-    @Override
-    public void init() {
-
-    }
 
     @Override
-    public void update() {
-        mustEnd = false;
-    }
+    public void show() {
 
-    @Override
-    public void end() {
-
-    }
-
-    @Override
-    public boolean mustEnd() {
-        return mustEnd;
     }
 }

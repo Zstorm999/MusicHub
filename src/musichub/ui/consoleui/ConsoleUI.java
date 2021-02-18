@@ -3,6 +3,7 @@ package musichub.ui.consoleui;
 import musichub.business.*;
 import musichub.main.Application;
 import musichub.ui.UserApplication;
+import musichub.ui.UserLoopApplication;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -26,7 +27,7 @@ import java.util.Scanner;
  * @see Categories
  * @author Thomas Archembeau, Eléonore Vaissaire
  */
-public class ConsoleUI implements UserApplication {
+public class ConsoleUI extends UserLoopApplication {
     
     private Application app;
     private boolean mustEnd;

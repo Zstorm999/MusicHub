@@ -29,13 +29,7 @@ public class MusicHub {
         }
 
 
-        app.init();
-
-        while(!app.mustEnd()){
-            app.update();
-        }
-
-        app.end();
+        app.show();
         
     }
 
@@ -44,7 +38,7 @@ public class MusicHub {
         if (args[0].equals("-c")) {
             new MusicHub(AppType.CONSOLE);
         }
-        else{
+        else{ //arg for graphical is -w
             new MusicHub(AppType.WINDOW);
         }
 
