@@ -2,7 +2,6 @@ package musichub.ui.consoleui;
 
 import musichub.business.*;
 import musichub.main.Application;
-import musichub.ui.UserApplication;
 import musichub.ui.UserLoopApplication;
 
 import java.text.ParseException;
@@ -59,11 +58,7 @@ public class ConsoleUI extends UserLoopApplication {
 
         String choice;
 
-        String songTitle, albumTitle, playlistName, artistName, content, bookTitle;
-        int length, genreChoice, langChoice, catChoice, id;
-        Genres genre;
-        Languages lang;
-        Categories cat;
+
 
         choice = scan.nextLine();
         switch(choice){
@@ -126,7 +121,7 @@ public class ConsoleUI extends UserLoopApplication {
 
     private void addSong() throws IllegalStateException{
         String songTitle, artistName, content;
-        int length, genreChoice, id;
+        int length, genreChoice;
         Genres genre;
 
         System.out.println("Enter the title of the song : ");
@@ -164,60 +159,13 @@ public class ConsoleUI extends UserLoopApplication {
         System.out.println("Enter the path to your song : ");
         content = scan.nextLine(); //Not taken into account
 
-        id = app.createNewId(1);
 
-        Song newSong = new Song(artistName, genre, songTitle, length, id, content);
-        app.addSong(newSong);
-    }
-
-    private void addAlbum(){
-        String albumTitle, artistName;
-        int id;
-        Date newDate;
-
-        String date;
-        System.out.println("Enter the title of the album :");
-        albumTitle = scan.nextLine();
-        System.out.println("Enter the artist's name : ");
-        artistName = scan.nextLine();
-        System.out.println("Enter the date associated to the album (format dd/MM/yyyy) :");
-        date = scan.nextLine();
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-
-
-        try {
-            newDate = format.parse(date);
-        }
-        catch (ParseException e){
-            System.out.println(e.getMessage());
-            return;
-        }
-
-        id = app.createNewId(2);
-
-        Album newAlbum = new Album(albumTitle, artistName, id, newDate);
-        app.addAlbum(newAlbum);
-    }
-
-    private void addSongToAlbum(){
-        String songTitle, albumTitle;
-
-        System.out.println("Enter the title of the song you wish to add : ");
-        songTitle = scan.nextLine();
-        System.out.println("Enter the title of the album where you wish to add the song : ");
-        albumTitle = scan.nextLine();
-
-        try {
-            app.addSongToAlbum(songTitle, albumTitle);
-        }
-        catch (ElementNotFoundException e){
-            System.out.println(e.getMessage());
-        }
+        app.addSong(artistName, genre, songTitle, length, content);
     }
 
     private void addAudioBook(){
         String bookTitle, artistName, content;
-        int length, langChoice, catChoice, id;
+        int length, langChoice, catChoice;
         Languages lang;
         Categories cat;
 
@@ -274,10 +222,48 @@ public class ConsoleUI extends UserLoopApplication {
         System.out.println("Enter the path to the associated file : ");
         content = scan.nextLine(); //not taken into account
 
-        id = app.createNewId(1);
+        app.addAudioBook(artistName, lang, cat, bookTitle, length, content);
+    }
 
-        AudioBook newBook = new AudioBook(artistName, lang, cat, bookTitle, length, id, content);
-        app.addAudioBook(newBook);
+    private void addAlbum(){
+        String albumTitle, artistName;
+        Date newDate;
+
+        String date;
+        System.out.println("Enter the title of the album :");
+        albumTitle = scan.nextLine();
+        System.out.println("Enter the artist's name : ");
+        artistName = scan.nextLine();
+        System.out.println("Enter the date associated to the album (format dd/MM/yyyy) :");
+        date = scan.nextLine();
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+
+
+        try {
+            newDate = format.parse(date);
+        }
+        catch (ParseException e){
+            System.out.println(e.getMessage());
+            return;
+        }
+
+        app.addAlbum(albumTitle, artistName, newDate);
+    }
+
+    private void addSongToAlbum(){
+        String songTitle, albumTitle;
+
+        System.out.println("Enter the title of the song you wish to add : ");
+        songTitle = scan.nextLine();
+        System.out.println("Enter the title of the album where you wish to add the song : ");
+        albumTitle = scan.nextLine();
+
+        try {
+            app.addSongToAlbum(songTitle, albumTitle);
+        }
+        catch (ElementNotFoundException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     private void createPlaylist(){
@@ -301,7 +287,7 @@ public class ConsoleUI extends UserLoopApplication {
 
     private void help(){
         System.out.println("1. Add a Song to MusicHub \nThis function add a song to the program.\nIt will ask you some details that you will need to give in order to save it.");
-        System.out.println("\n2. Add an Album to Musichub \nThis function add an album to the program.\nIt will need from you to answer some details about the album in order to save it.");
+        System.out.println("\n2. Add an Album to MusicHub \nThis function add an album to the program.\nIt will need from you to answer some details about the album in order to save it.");
         System.out.println("\n3. Add a song to an album \nThis function will add a song to an album, where both of them need to already exist in the program.\nThe program will ask for the names of the song and the album.");
         System.out.println("\n4. Add an Audio Book to MusicHub \nThis function add an audio book to the program.\nIt will ask you for different details that you will need to answer.");
         System.out.println("\n5. Creation of a new Playlist\nThis function will create a new playlist and will ask you to add some elements.\nYou will need to know the name of the elements you wish to add");

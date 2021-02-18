@@ -143,27 +143,52 @@ public class Application {
     }
 
     /**
-     * Add an new audio book to the list audioBooks
-     * @param book the book to add
+     * Add a new song to the list songs
+     * @param artistName the name of the artist performing the song
+     * @param genre the genre of the song
+     * @param songTitle the title of the song
+     * @param length the length of the song
+     * @param content the file containing the song
      */
-    public void addAudioBook(AudioBook book){
-        audioBooks.add(book);
+    public void addSong(String artistName, Genres genre, String songTitle, int length, String content){
+
+        int id = createNewId(1);
+
+        Song newSong = new Song(artistName, genre, songTitle, length, id, content);
+
+        songs.add(newSong);
     }
 
     /**
-     * Add a new song to the list songs
-     * @param song the song to add
+     * Add an new audio book to the list audioBooks
+     * @param writerName the writer of the book
+     * @param lang the language of the book
+     * @param cat the category of the book
+     * @param bookTitle the book title
+     * @param length the length of the book in seconds
+     * @param content the file containing the book
      */
-    public void addSong(Song song){
-        songs.add(song);
+    public void addAudioBook(String writerName, Languages lang, Categories cat, String bookTitle, int length, String content){
+        int id = createNewId(1);
+
+        AudioBook newBook = new AudioBook(writerName, lang, cat, bookTitle, length, id, content);
+
+        audioBooks.add(newBook);
     }
+
 
     /**
      * Add a new album to the list albums
-     * @param album the album to add
+     * @param albumTitle the title of the Album
+     * @param artistName the name of the artist performing in the album
+     * @param releaseDate the date at which the album was released
      */
-    public void addAlbum(Album album){
-        albums.add(album);
+    public void addAlbum(String albumTitle, String artistName, Date releaseDate){
+
+        int id = createNewId(2);
+
+        Album newAlbum = new Album(albumTitle, artistName, id, releaseDate);
+        albums.add(newAlbum);
     }
 
     /**
@@ -209,6 +234,8 @@ public class Application {
         Playlist newPl = new Playlist(name, id);
         playlists.add(newPl);
 
+
+        //TODO: send this to the user interface, what is it doing here ??!
         do {
             System.out.println("Do you want to add a song or an audio book ? Press a key : 1.Song 2.Audio book");
             choice = scan.nextInt();
