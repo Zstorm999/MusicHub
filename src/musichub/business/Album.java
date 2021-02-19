@@ -18,13 +18,14 @@ import musichub.util.AudioToXML;
  * @see Genres
  * @author Thomas Archambeau, Eléonore Vaissaire
  */
-public class Album implements AudioToXML, Comparable<Album>{
+public class Album implements AudioToXML, Comparable<Album>, IHasAnID{
     private String title;
     private String artist;
 
-    private int id;
+    private int id = -1;
     private Date date;
 
+    //TODO: convert this to a list of integers (referring to the id)
     private List<Song> list;
 
     private SimpleDateFormat dateFormat;
@@ -42,17 +43,29 @@ public class Album implements AudioToXML, Comparable<Album>{
      * Creates a new album
      * @param title the title
      * @param artist the artist
-     * @param id the id
      * @param date the date of creation
      */
-    public Album(String title, String artist, int id, Date date){
+    public Album(String title, String artist, Date date){
         this();
 
         this.title = title;
         this.artist = artist;
-        this.id = id;
         this.date = date;
 
+    }
+
+    /**
+     * Copy constructor
+     * @param other another album
+     */
+    public Album(Album other){
+        this();
+
+        this.date = other.date;
+        this.artist = other.artist;
+        this.title = other.title;
+
+        this.list = other.list;
     }
 
 
@@ -74,8 +87,17 @@ public class Album implements AudioToXML, Comparable<Album>{
      * Returns the album's id
      * @return album's id
      */
-    public int getId(){
+    public int getID(){
         return id;
+    }
+
+    public void setID(int newID) throws IDAlreadySetException {
+
+        if( id != -1){
+            throw new IDAlreadySetException("This Album already has an ID! Why are you trying to resetting it ?");
+        }
+
+        this.id = newID;
     }
 
     /**
@@ -143,20 +165,10 @@ public class Album implements AudioToXML, Comparable<Album>{
             }
 
         }
-        catch(IndexOutOfBoundsException e){
+        catch(IndexOutOfBoundsException | ElementNotFoundException | ParseException | NumberFormatException e){
             e.printStackTrace();
-        }
-        catch(NumberFormatException e){
-            e.printStackTrace();
-        }
-        catch(NullPointerException e){
+        } catch(NullPointerException e){
             //just ignore
-        }
-        catch(ParseException e){
-            e.printStackTrace();
-        }
-        catch(ElementNotFoundException e){
-            e.printStackTrace();
         }
     }
 

@@ -126,7 +126,7 @@ public class ConsoleUI extends UserLoopApplication {
 
     private void addSong() throws IllegalStateException{
         String songTitle, artistName, content;
-        int length, genreChoice, id;
+        int length, genreChoice;
         Genres genre;
 
         System.out.println("Enter the title of the song : ");
@@ -164,15 +164,13 @@ public class ConsoleUI extends UserLoopApplication {
         System.out.println("Enter the path to your song : ");
         content = scan.nextLine(); //Not taken into account
 
-        id = app.createNewId(1);
 
-        Song newSong = new Song(artistName, genre, songTitle, length, id, content);
+        Song newSong = new Song(artistName, genre, songTitle, length, content);
         app.addSong(newSong);
     }
 
     private void addAlbum(){
         String albumTitle, artistName;
-        int id;
         Date newDate;
 
         String date;
@@ -193,9 +191,8 @@ public class ConsoleUI extends UserLoopApplication {
             return;
         }
 
-        id = app.createNewId(2);
 
-        Album newAlbum = new Album(albumTitle, artistName, id, newDate);
+        Album newAlbum = new Album(albumTitle, artistName, newDate);
         app.addAlbum(newAlbum);
     }
 
@@ -217,7 +214,7 @@ public class ConsoleUI extends UserLoopApplication {
 
     private void addAudioBook(){
         String bookTitle, artistName, content;
-        int length, langChoice, catChoice, id;
+        int length, langChoice, catChoice;
         Languages lang;
         Categories cat;
 
@@ -274,9 +271,8 @@ public class ConsoleUI extends UserLoopApplication {
         System.out.println("Enter the path to the associated file : ");
         content = scan.nextLine(); //not taken into account
 
-        id = app.createNewId(1);
 
-        AudioBook newBook = new AudioBook(artistName, lang, cat, bookTitle, length, id, content);
+        AudioBook newBook = new AudioBook(artistName, lang, cat, bookTitle, length, content);
         app.addAudioBook(newBook);
     }
 

@@ -31,14 +31,25 @@ public class Song extends AudioElement implements Comparable<Song>{
      * @param gen the genre
      * @param title the title
      * @param length the length in seconds
-     * @param id the id
      * @param content the file associated to this song
      */
-    public Song(String artist, Genres gen, String title, int length, int id, String content){
-        super(title, length, id, content);
+    public Song(String artist, Genres gen, String title, int length,  String content){
+        super(title, length, content);
         this.artist = artist;
         this.gen = gen;
     }
+
+    /**
+     * Copy constructor
+     * @param other another song
+     */
+    public Song(Song other){
+        super(other);
+        this.artist = other.artist;
+        this.gen = other.gen;
+
+    }
+
 
     /**
      * Compares a song by Genre
@@ -47,6 +58,7 @@ public class Song extends AudioElement implements Comparable<Song>{
     public int compareTo(Song song) {
         return this.gen.toString().compareTo(song.gen.toString());
     }
+
 
     /**
      * Returns the artist 
@@ -77,9 +89,8 @@ public class Song extends AudioElement implements Comparable<Song>{
      * @return a complete string with the attributes of the song
      */
     public String toString(){
-        String result = null;
-        result = artist + ", " + gen + ", " + title + ", " + length + "s, " + content + "; ";
-        return result;
+        return artist + ", " + gen + ", " + title + ", " + length + "s, " + content + "; ";
+
     }
 
     public Map<String, List<String>> save(){
@@ -108,16 +119,10 @@ public class Song extends AudioElement implements Comparable<Song>{
             content = arguments.get("Content").get(0);
 
         }
-        catch(IndexOutOfBoundsException e){
+        catch(IndexOutOfBoundsException | NullPointerException | NumberFormatException e){
             e.printStackTrace();
         }
-        catch(NumberFormatException e){
-            e.printStackTrace();
-        }
-        catch(NullPointerException e){
-            e.printStackTrace();
-        }
-        
+
     }
 
 }

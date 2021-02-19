@@ -115,7 +115,7 @@ public class Application {
      * @param elm the element for which to generate an ID, 1 is a song or an audio book, 2 is an album
      * @return an new ID
      */
-    public int createNewId(int elm){
+    private int createNewId(int elm){
         int id = 0;
         //if the element is a song or a book
         if(elm == 1) {
@@ -133,8 +133,8 @@ public class Application {
         //if the element is an album
         else if(elm == 2){
             for(Album album : albums){
-                if(id <= album.getId()){
-                    id = album.getId();
+                if(id <= album.getID()){
+                    id = album.getID();
                 }
             }
         }
@@ -147,7 +147,18 @@ public class Application {
      * @param book the book to add
      */
     public void addAudioBook(AudioBook book){
-        audioBooks.add(book);
+        AudioBook newBook = new AudioBook(book);
+
+        try{
+            newBook.setID(createNewId(1));
+        }
+        catch (IDAlreadySetException e){
+            //TODO: change this so that it outputs to the log file or report exception
+            System.out.println(e.getMessage());
+            return;
+        }
+
+        audioBooks.add(newBook);
     }
 
     /**
@@ -155,7 +166,18 @@ public class Application {
      * @param song the song to add
      */
     public void addSong(Song song){
-        songs.add(song);
+        Song newSong = new Song(song);
+
+        try {
+            newSong.setID(createNewId(1));
+        }
+        catch (IDAlreadySetException e){
+            //TODO: change this so that it outputs to the log file or report exception
+            System.out.println(e.getMessage());
+            return;
+        }
+
+        songs.add(newSong);
     }
 
     /**
@@ -163,7 +185,18 @@ public class Application {
      * @param album the album to add
      */
     public void addAlbum(Album album){
-        albums.add(album);
+        Album newAlbum = new Album(album);
+
+        try{
+            newAlbum.setID(createNewId(2));
+        }
+        catch (IDAlreadySetException e){
+            //TODO: change this so that it outputs to the log file or report exception
+            System.out.println(e.getMessage());
+            return;
+        }
+
+        albums.add(newAlbum);
     }
 
     /**
@@ -196,6 +229,7 @@ public class Application {
      * @param name the name of the new playlist
      */
     public void createPlaylist(String name){
+        //TODO: wtf is that doing here !
         int id = 0;
         int choice;
         String songTitle, bookTitle, newChoice;

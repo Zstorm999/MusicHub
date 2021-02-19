@@ -33,14 +33,24 @@ public class AudioBook extends AudioElement implements Comparable<AudioBook>{
      * @param category the category
      * @param title the title
      * @param length the length in seconds
-     * @param id the id
      * @param content the file associated to this book
      */
-    public AudioBook(String author, Languages language, Categories category, String title, int length, int id, String content){
-        super(title, length, id, content);
+    public AudioBook(String author, Languages language, Categories category, String title, int length, String content){
+        super(title, length, content);
         this.author = author;
         this.language = language;
         this.category = category;
+    }
+
+    /**
+     * Copy constructor
+     * @param other another book
+     */
+    public AudioBook(AudioBook other){
+        super(other);
+        this.author = other.author;
+        this.language = other.language;
+        this.category = other.category;
     }
 
     /**
@@ -70,8 +80,8 @@ public class AudioBook extends AudioElement implements Comparable<AudioBook>{
      * @return a complete string with all the attributes
      */
     public String toString(){
-        String result = title + ", by : " + author + ", " + language + ", " + category + ", " + length + "s, " + content + "; ";
-        return result;
+        return title + ", by : " + author + ", " + language + ", " + category + ", " + length + "s, " + content + "; ";
+
     }
 
     
@@ -101,13 +111,7 @@ public class AudioBook extends AudioElement implements Comparable<AudioBook>{
             content = attributes.get("Content").get(0);
 
         }
-        catch(IndexOutOfBoundsException e){
-            e.printStackTrace();
-        }
-        catch(NumberFormatException e){
-            e.printStackTrace();
-        }
-        catch(NullPointerException e){
+        catch(IndexOutOfBoundsException | NullPointerException | NumberFormatException e){
             e.printStackTrace();
         }
 
