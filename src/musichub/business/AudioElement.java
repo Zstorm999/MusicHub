@@ -2,7 +2,7 @@ package musichub.business;
 
 import java.util.List;
 
-import musichub.util.AudioToXML;
+import musichub.util.IAudioToXML;
 
 /**
  * Represents any audio element 
@@ -10,7 +10,7 @@ import musichub.util.AudioToXML;
  * @see AudioBook
  * @author Thomas Archambeau, Eléonore Vaissaire
  */
-public abstract class AudioElement implements AudioToXML, IHasAnID{
+public abstract class AudioElement implements IAudioToXML, IHasAnID{
     protected String title;
     protected int length;
     protected int id = -1;

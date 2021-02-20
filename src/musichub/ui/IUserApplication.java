@@ -4,10 +4,10 @@ package musichub.ui;
 /**
  * Represents any user interface
  */
-public interface UserApplication {
+public interface IUserApplication {
 
     /**
      * Displays the user interface
      */
-    void show();
+    void run();
 }

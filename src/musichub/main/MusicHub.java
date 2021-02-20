@@ -1,18 +1,18 @@
 package musichub.main;
 
-import musichub.ui.UserApplication;
+import musichub.ui.IUserApplication;
 import musichub.ui.consoleui.ConsoleUI;
-import musichub.ui.windowui.WindowUI;
+import musichub.ui.windowui.SwingWindowUI;
 
 /**
  * Main class of the program
  * @see musichub.ui.consoleui.ConsoleUI
- * @see musichub.ui.windowui.WindowUI
+ * @see SwingWindowUI
  * @author Thomas Archambeau, Eléonore Vaissaire
  */
 public class MusicHub {
 
-    UserApplication app;
+    IUserApplication app;
 
     /**
      * Creates a new object of type MusicHub
@@ -24,12 +24,12 @@ public class MusicHub {
                 app = new ConsoleUI();
                 break;
             case WINDOW:
-                app = new WindowUI();
+                app = new SwingWindowUI();
                 break;
         }
 
 
-        app.show();
+        app.run();
         
     }
 

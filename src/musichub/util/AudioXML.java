@@ -21,10 +21,10 @@ import org.xml.sax.SAXException;
 /**
  * Handles all XML-related manipulation for objects implementing the AudioToXML interface.
  * @param <T> the type of data that will be written to the XML file. It must implement the AudioToXML interface, and also have a constructor with 0 arguments
- * @see AudioToXML
+ * @see IAudioToXML
  * @author Thomas Archambeau, Eléonore Vaisaire
  */
-public class AudioXML<T extends AudioToXML>{
+public class AudioXML<T extends IAudioToXML>{
     
     private DocumentBuilderFactory dbFactory;
     private DocumentBuilder dbBuilder;
@@ -170,7 +170,7 @@ public class AudioXML<T extends AudioToXML>{
         
 
         //for each element in the global list
-        for(AudioToXML audioElt : elements){
+        for(IAudioToXML audioElt : elements){
             Map<String, List<String>> attributes = audioElt.save();
             Set<String> keySet = attributes.keySet();
 

@@ -3,10 +3,10 @@ package musichub.ui;
 /**
  * Represents a user application based on an internal loop.
  * @author Thomas Archambeau
- * @see musichub.ui.UserApplication
+ * @see IUserApplication
  * @see musichub.ui.consoleui.ConsoleUI
  */
-public abstract class UserLoopApplication implements UserApplication{
+public abstract class UserLoopApplication implements IUserApplication {
 
     protected boolean mustEnd;
 
@@ -37,7 +37,7 @@ public abstract class UserLoopApplication implements UserApplication{
 
 
     @Override
-    public void show(){
+    public void run(){
         init();
 
         while(!mustEnd()){

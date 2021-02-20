@@ -2,7 +2,6 @@ package musichub.ui.consoleui;
 
 import musichub.business.*;
 import musichub.main.Application;
-import musichub.ui.UserApplication;
 import musichub.ui.UserLoopApplication;
 
 import java.text.ParseException;
@@ -297,7 +296,7 @@ public class ConsoleUI extends UserLoopApplication {
 
     private void help(){
         System.out.println("1. Add a Song to MusicHub \nThis function add a song to the program.\nIt will ask you some details that you will need to give in order to save it.");
-        System.out.println("\n2. Add an Album to Musichub \nThis function add an album to the program.\nIt will need from you to answer some details about the album in order to save it.");
+        System.out.println("\n2. Add an Album to MusicHub \nThis function add an album to the program.\nIt will need from you to answer some details about the album in order to save it.");
         System.out.println("\n3. Add a song to an album \nThis function will add a song to an album, where both of them need to already exist in the program.\nThe program will ask for the names of the song and the album.");
         System.out.println("\n4. Add an Audio Book to MusicHub \nThis function add an audio book to the program.\nIt will ask you for different details that you will need to answer.");
         System.out.println("\n5. Creation of a new Playlist\nThis function will create a new playlist and will ask you to add some elements.\nYou will need to know the name of the elements you wish to add");

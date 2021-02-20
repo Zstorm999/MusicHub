@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import musichub.util.AudioToXML;
+import musichub.util.IAudioToXML;
 
 /**
  * Represents an audio book
@@ -88,13 +88,13 @@ public class AudioBook extends AudioElement implements Comparable<AudioBook>{
     public Map<String, List<String>> save(){
         HashMap<String, List<String>> attributes = new HashMap<>();
 
-        attributes.put("Author", AudioToXML.toList(author));
-        attributes.put("Language", AudioToXML.toList(language.toString()));
-        attributes.put("Category", AudioToXML.toList(category.toString()));
-        attributes.put("Title", AudioToXML.toList(title));
-        attributes.put("Length", AudioToXML.toList(Integer.toString(length)));
-        attributes.put("ID", AudioToXML.toList(Integer.toString(id)));
-        attributes.put("Content", AudioToXML.toList(content));
+        attributes.put("Author", IAudioToXML.toList(author));
+        attributes.put("Language", IAudioToXML.toList(language.toString()));
+        attributes.put("Category", IAudioToXML.toList(category.toString()));
+        attributes.put("Title", IAudioToXML.toList(title));
+        attributes.put("Length", IAudioToXML.toList(Integer.toString(length)));
+        attributes.put("ID", IAudioToXML.toList(Integer.toString(id)));
+        attributes.put("Content", IAudioToXML.toList(content));
 
         return attributes;
     }

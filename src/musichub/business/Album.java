@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import musichub.main.Application;
-import musichub.util.AudioToXML;
+import musichub.util.IAudioToXML;
 
 /**
  * Represents an album. <br>
@@ -18,7 +18,7 @@ import musichub.util.AudioToXML;
  * @see Genres
  * @author Thomas Archambeau, Eléonore Vaissaire
  */
-public class Album implements AudioToXML, Comparable<Album>, IHasAnID{
+public class Album implements IAudioToXML, Comparable<Album>, IHasAnID{
     private String title;
     private String artist;
 
@@ -175,10 +175,10 @@ public class Album implements AudioToXML, Comparable<Album>, IHasAnID{
     public Map<String, List<String>> save(){
         HashMap<String, List<String>> attributes = new HashMap<>();
 
-        attributes.put("Title", AudioToXML.toList(title));
-        attributes.put("Artist", AudioToXML.toList(artist));
-        attributes.put("ID", AudioToXML.toList(Integer.toString(id)));
-        attributes.put("Date", AudioToXML.toList(dateFormat.format(date)));
+        attributes.put("Title", IAudioToXML.toList(title));
+        attributes.put("Artist", IAudioToXML.toList(artist));
+        attributes.put("ID", IAudioToXML.toList(Integer.toString(id)));
+        attributes.put("Date", IAudioToXML.toList(dateFormat.format(date)));
 
         LinkedList<String> idList = new LinkedList<>();
 

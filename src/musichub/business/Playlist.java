@@ -1,7 +1,7 @@
 package musichub.business;
 
 import musichub.main.Application;
-import musichub.util.AudioToXML;
+import musichub.util.IAudioToXML;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -16,7 +16,7 @@ import java.util.List;
  * @see AudioElement
  * @author Thomass Archambeau, Eléonore Vaissaire
  */
-public class Playlist implements AudioToXML{
+public class Playlist implements IAudioToXML {
     
     private String name;
     private int id;
@@ -110,8 +110,8 @@ public class Playlist implements AudioToXML{
     public Map<String, List<String>> save(){
         HashMap<String, List<String>> attributes = new HashMap<>();
 
-        attributes.put("Name", AudioToXML.toList(name));
-        attributes.put("ID", AudioToXML.toList(Integer.toString(id)));
+        attributes.put("Name", IAudioToXML.toList(name));
+        attributes.put("ID", IAudioToXML.toList(Integer.toString(id)));
 
         LinkedList<String> idList = new LinkedList<>();
 

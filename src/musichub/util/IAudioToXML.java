@@ -9,7 +9,7 @@ import java.util.List;
  * 
  * @author Thomas Archambeau, Eléonore Vaissaire
  */
-public interface AudioToXML {
+public interface IAudioToXML {
 
     /**
      * Given a list of attributes as parameter, stores this attributes in an instance of the class (previously created). <br>

@@ -2,7 +2,7 @@ package musichub.business;
 
 import java.util.Map;
 
-import musichub.util.AudioToXML;
+import musichub.util.IAudioToXML;
 
 import java.util.HashMap;
 import java.util.List;
@@ -97,12 +97,12 @@ public class Song extends AudioElement implements Comparable<Song>{
         
         HashMap<String, List<String>> attributes = new HashMap<>();
 
-        attributes.put("Artist", AudioToXML.toList(artist));
-        attributes.put("Genre", AudioToXML.toList(gen.toString()));
-        attributes.put("Title", AudioToXML.toList(title));
-        attributes.put("Length", AudioToXML.toList(Integer.toString(length)));
-        attributes.put("ID", AudioToXML.toList(Integer.toString(id)));
-        attributes.put("Content", AudioToXML.toList(content));
+        attributes.put("Artist", IAudioToXML.toList(artist));
+        attributes.put("Genre", IAudioToXML.toList(gen.toString()));
+        attributes.put("Title", IAudioToXML.toList(title));
+        attributes.put("Length", IAudioToXML.toList(Integer.toString(length)));
+        attributes.put("ID", IAudioToXML.toList(Integer.toString(id)));
+        attributes.put("Content", IAudioToXML.toList(content));
         
 
         return attributes;
