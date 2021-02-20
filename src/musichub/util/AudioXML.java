@@ -31,9 +31,9 @@ public class AudioXML<T extends IAudioToXML>{
     private TransformerFactory transformerFactory;
     private Transformer transformer;
 
-    private String filepath;
-    private Class<T> klass;
-    private String xmlTypeIdentifier;
+    private final String filepath;
+    private final Class<T> klass;
+    private final String xmlTypeIdentifier;
 
     /**
      * Creates a new AudioXML object.

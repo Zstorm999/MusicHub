@@ -80,8 +80,7 @@ public class AudioBook extends AudioElement implements Comparable<AudioBook>{
      * @return a complete string with all the attributes
      */
     public String toString(){
-        return title + ", by : " + author + ", " + language + ", " + category + ", " + length + "s, " + content + "; ";
-
+        return title;
     }
 
     

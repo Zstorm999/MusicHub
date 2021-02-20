@@ -17,7 +17,7 @@ public interface IAudioToXML {
      * 
      * @param attributes a map of all the attributes, mapped by name 
      */
-    public void load(Map<String, List<String>> attributes);
+    void load(Map<String, List<String>> attributes);
 
     /**
      * Puts all the attributes of the class to be saved into an XML file into a map. <br>
@@ -26,14 +26,14 @@ public interface IAudioToXML {
      * 
      * @return the Map created
      */
-    public Map<String, List<String>> save();
+    Map<String, List<String>> save();
 
     /**
      * Transforms a String into a List&lt;String&gt; containing only this element.
      * @param attribute the element to put in the list
      * @return a list containing only one element
      */
-    public static List<String> toList(String attribute){
-        return Arrays.asList(new String[] {attribute});
+    static List<String> toList(String attribute){
+        return Arrays.asList(attribute);
     }
 }

@@ -89,7 +89,7 @@ public class Song extends AudioElement implements Comparable<Song>{
      * @return a complete string with the attributes of the song
      */
     public String toString(){
-        return artist + ", " + gen + ", " + title + ", " + length + "s, " + content + "; ";
+        return title;
 
     }
 
