@@ -203,6 +203,7 @@ public class AudioXML<T extends IAudioToXML>{
             StreamResult streamResult = new StreamResult(new File(filepath));
 
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            transformer.setOutputProperty(OutputKeys.ENCODING, "utf-8");
 
             transformer.transform(domSource, streamResult);
         }

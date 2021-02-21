@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <audio>
         
     <Song>
@@ -265,7 +265,7 @@
         <Length>29881</Length>
         <Content>/home/usr/books/hp1_fr.mp3</Content>
         <Author>J.K.Rowling</Author>
-        <Title>Harry Potter a l'Ecole des Sorciers</Title>
+        <Title>Harry Potter à l'Ecole des Sorciers</Title>
         <ID>13</ID>
     </AudioBook>
     <AudioBook>
