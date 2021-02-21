@@ -240,6 +240,54 @@
         <ID>24</ID>
             
     </Song>
+        
+    <Song>
+                
+        <Artist>Passenger</Artist>
+                
+        <Length>290</Length>
+                
+        <Content>/home/user/music/asftdabh.mp3</Content>
+                
+        <Title>A Song For The Drunk And Broken Hearted</Title>
+                
+        <Genre>Pop</Genre>
+                
+        <ID>25</ID>
+            
+    </Song>
+        
+    <Song>
+                
+        <Artist>The Cab</Artist>
+                
+        <Length>224</Length>
+                
+        <Content>/home/user/music/angelwithashotgun.mp3</Content>
+                
+        <Title>Angel With A Shotgun</Title>
+                
+        <Genre>Rock</Genre>
+                
+        <ID>26</ID>
+            
+    </Song>
+        
+    <Song>
+                
+        <Artist>Elton John</Artist>
+                
+        <Length>229</Length>
+                
+        <Content>/home/user/music/yoursong.mp3</Content>
+                
+        <Title>Your Song</Title>
+                
+        <Genre>Pop</Genre>
+                
+        <ID>27</ID>
+            
+    </Song>
     
     <AudioBook>
         <Category>Documentary</Category>

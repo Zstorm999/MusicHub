@@ -21,6 +21,7 @@ public class SwingWindowUI extends JFrame implements IUserApplication {
     //song panel
     private JPanel songsPanel;
     private JList songsDisplay;
+    private JButton newSongButton;
     private JPanel songInfo;
     private JLabel songTitle;
     private JLabel songArtist;
@@ -57,9 +58,11 @@ public class SwingWindowUI extends JFrame implements IUserApplication {
     private JLabel bookLength;
 
 
+
     //Other members
 
     private Application app;
+    private Vector<Song> songs;
 
     public SwingWindowUI() {
         app = new Application();
@@ -73,6 +76,9 @@ public class SwingWindowUI extends JFrame implements IUserApplication {
         bookInfo.setVisible(false);
         albumInfo.setVisible(false);
         playlistInfo.setVisible(false);
+
+        newSongButton.addActionListener(e -> createNewSong());
+
 
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
@@ -113,9 +119,9 @@ public class SwingWindowUI extends JFrame implements IUserApplication {
 
     private void loadSongList(){
 
-        Vector<Song> v = new Vector<>(app.getSongs());
+        songs = new Vector<>(app.getSongs());
 
-        songsDisplay.setListData(v);
+        songsDisplay.setListData(songs);
 
 
 
@@ -138,7 +144,7 @@ public class SwingWindowUI extends JFrame implements IUserApplication {
                 lastLast = e.getLastIndex();
 
 
-                Song selected = v.get(index);
+                Song selected = songs.get(index);
                 songTitle.setText(selected.getTitle());
                 songArtist.setText(selected.getArtist());
                 songGenre.setText(selected.getGen().toString());
@@ -288,6 +294,20 @@ public class SwingWindowUI extends JFrame implements IUserApplication {
             }
         });
 
+    }
+
+    private void createNewSong(){
+        SwingCreateSongDialog dial = new SwingCreateSongDialog();
+        dial.setLocationRelativeTo(null);
+        dial.setVisible(true);
+
+        if(dial.getSong() != null) {
+
+            app.addSong(dial.getSong());
+
+            songs = new Vector<>(app.getSongs());
+            songsDisplay.setListData(songs);
+        }
     }
 
     public void run() {
