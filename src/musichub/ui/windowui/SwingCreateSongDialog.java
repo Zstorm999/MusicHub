@@ -70,7 +70,7 @@ public class SwingCreateSongDialog extends JDialog {
 
 
         if(titleField.getText().equals("")){
-            displayErrorMessage("Title field is empty !");
+            displayErrorMessage("Title field is empty");
             return;
         }
         else{
@@ -132,10 +132,7 @@ public class SwingCreateSongDialog extends JDialog {
         }
         catch (Exception e){
             System.out.println(e.getMessage());
-            JOptionPane.showMessageDialog(contentPane,
-                    "Invalid genre, for whatever reason",
-                    "Unable to create song",
-                    JOptionPane.ERROR_MESSAGE);
+            displayErrorMessage("Invalid genre, for whatever reason");
             return;
         }
 

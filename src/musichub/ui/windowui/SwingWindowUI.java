@@ -56,13 +56,14 @@ public class SwingWindowUI extends JFrame implements IUserApplication {
     private JPanel playlistInfo;
     private JList playlistElementDisplay;
     private JLabel bookLength;
-
+    private JButton newBookButton;
 
 
     //Other members
 
     private Application app;
     private Vector<Song> songs;
+    private Vector<AudioBook> books;
 
     public SwingWindowUI() {
         app = new Application();
@@ -78,6 +79,7 @@ public class SwingWindowUI extends JFrame implements IUserApplication {
         playlistInfo.setVisible(false);
 
         newSongButton.addActionListener(e -> createNewSong());
+        newBookButton.addActionListener(e -> createNewBook());
 
 
         addWindowListener(new WindowAdapter() {
@@ -159,9 +161,9 @@ public class SwingWindowUI extends JFrame implements IUserApplication {
     }
 
     private void loadBooksList(){
-        Vector<AudioBook> v = new Vector<>(app.getAudioBooks());
+        books = new Vector<>(app.getAudioBooks());
 
-        booksDisplay.setListData(v);
+        booksDisplay.setListData(books);
 
 
         booksDisplay.addListSelectionListener(new ListSelectionListener() {
@@ -183,7 +185,7 @@ public class SwingWindowUI extends JFrame implements IUserApplication {
                 lastLast = e.getLastIndex();
 
 
-                AudioBook selected = v.get(index);
+                AudioBook selected = books.get(index);
                 bookTitle.setText(selected.getTitle());
                 bookAuthor.setText(selected.getAuthor());
                 bookCategory.setText(selected.getCategory().toString());
@@ -307,6 +309,19 @@ public class SwingWindowUI extends JFrame implements IUserApplication {
 
             songs = new Vector<>(app.getSongs());
             songsDisplay.setListData(songs);
+        }
+    }
+
+    private void createNewBook(){
+        SwingCreateBookDialog dial = new SwingCreateBookDialog();
+        dial.setLocationRelativeTo(null);
+        dial.setVisible(true);
+
+        if(dial.getBook() != null){
+            app.addAudioBook(dial.getBook());
+
+            books = new Vector<>(app.getAudioBooks());
+            booksDisplay.setListData(books);
         }
     }
 

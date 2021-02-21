@@ -370,4 +370,13 @@
         <Title>Barack Obama Presidency</Title>
         <ID>22</ID>
     </AudioBook>
+    <AudioBook>
+        <Category>Novel</Category>
+        <Language>English</Language>
+        <Length>70380</Length>
+        <Content>/home/user/books/eragon.mp3</Content>
+        <Author>Christopher Paolini</Author>
+        <Title>Eragon</Title>
+        <ID>28</ID>
+    </AudioBook>
 </audio>
