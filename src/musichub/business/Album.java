@@ -25,8 +25,9 @@ public class Album implements IAudioToXML, Comparable<Album>, IHasAnID{
     private int id = -1;
     private Date date;
 
-    //TODO: convert this to a list of integers (referring to the id)
-    private List<Song> list;
+    int length;
+
+    private List<Integer> list;
 
     private SimpleDateFormat dateFormat;
 
@@ -37,6 +38,8 @@ public class Album implements IAudioToXML, Comparable<Album>, IHasAnID{
     public Album(){
         dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         list = new LinkedList<>();
+
+        length = 0;
     }
 
     /**
@@ -105,11 +108,6 @@ public class Album implements IAudioToXML, Comparable<Album>, IHasAnID{
      * @return the total length in seconds of the album
      */
     public int getLength(){
-        int length = 0;
-        for(Song elt : list){
-            length += elt.getLength();
-        }
-
         return length;
     }
 
@@ -121,12 +119,19 @@ public class Album implements IAudioToXML, Comparable<Album>, IHasAnID{
         return title;
     }
 
+    public String getArtist(){
+        return artist;
+    }
+
     /**
      * Add a song to the album
      * @param song the song to add
      */
     public void add(Song song){
-        list.add(song);
+        list.add(song.getID());
+
+        length += song.getLength();
+
     }
 
     /**
@@ -134,6 +139,10 @@ public class Album implements IAudioToXML, Comparable<Album>, IHasAnID{
      * @return a complete string with all the attributes
      */
     public String toString(){
+        return title;
+    }
+
+    public String getFullString(){
         return "Album: " + title + ", by: " + artist + ", published on " + date + "; total length: " + getLength() + "s.";
     }
 
@@ -141,7 +150,7 @@ public class Album implements IAudioToXML, Comparable<Album>, IHasAnID{
      * Returns a list of all the songs in the album
      * @return a list of all the songs in the album
      */
-    public List<Song> getSongs(){
+    public List<Integer> getSongs(){
         return list;
     }
 
@@ -159,13 +168,14 @@ public class Album implements IAudioToXML, Comparable<Album>, IHasAnID{
             artist = attributes.get("Artist").get(0);
             id = Integer.parseInt(attributes.get("ID").get(0));
             date = dateFormat.parse(attributes.get("Date").get(0));
+            length = Integer.parseInt(attributes.get("Length").get(0));
 
             for (String id : attributes.get("Element")) {
-                list.add(Application.getSongWithID(Integer.parseInt(id)));                
+                list.add(Integer.parseInt(id));
             }
 
         }
-        catch(IndexOutOfBoundsException | ElementNotFoundException | ParseException | NumberFormatException e){
+        catch(IndexOutOfBoundsException | ParseException | NumberFormatException e){
             e.printStackTrace();
         } catch(NullPointerException e){
             //just ignore
@@ -179,11 +189,12 @@ public class Album implements IAudioToXML, Comparable<Album>, IHasAnID{
         attributes.put("Artist", IAudioToXML.toList(artist));
         attributes.put("ID", IAudioToXML.toList(Integer.toString(id)));
         attributes.put("Date", IAudioToXML.toList(dateFormat.format(date)));
+        attributes.put("Length", IAudioToXML.toList(Integer.toString(length)));
 
         LinkedList<String> idList = new LinkedList<>();
 
-        for(Song elt : list){
-            idList.add(Integer.toString(elt.id));
+        for(int elt : list){
+            idList.add(Integer.toString(elt));
         }
 
         attributes.put("Element", idList);

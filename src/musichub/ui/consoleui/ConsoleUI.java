@@ -6,10 +6,7 @@ import musichub.ui.UserLoopApplication;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Represents the class that handle the application and its functions
@@ -338,7 +335,20 @@ public class ConsoleUI extends UserLoopApplication {
             return;
         }
 
-        List<Song> list = album.getSongs();
+        //List<Song> list = album.getSongs();
+
+        List<Song> list = new LinkedList<>();
+
+        try {
+            for (int id : album.getSongs()) {
+                list.add(app.getSongWithID(id));
+            }
+        }
+        catch (ElementNotFoundException e){
+            System.out.println(e.getMessage());
+            return;
+        }
+
         Collections.sort(list);
         for(Song song : list){
             System.out.println(song);
@@ -369,8 +379,14 @@ public class ConsoleUI extends UserLoopApplication {
             return;
         }
 
-        for(Song song : alb.getSongs()){
-            System.out.println(song);
+
+        try {
+            for (int id : alb.getSongs()) {
+                System.out.println(app.getSongWithID(id));
+            }
+        }
+        catch (ElementNotFoundException e){
+            System.out.println(e.getMessage());
         }
 
 

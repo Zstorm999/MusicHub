@@ -24,31 +24,32 @@ import java.util.*;
  */
 public class Application {
 
-    private static AudioXML<Song> songsXML;
-    private static AudioXML<AudioBook> audioBooksXML;
-    private static AudioXML<Album> albumsXML;
-    private static AudioXML<Playlist> playlistsXML;
+
+    private AudioXML<Song> songsXML;
+    private AudioXML<AudioBook> audioBooksXML;
+    private AudioXML<Album> albumsXML;
+    private AudioXML<Playlist> playlistsXML;
 
     
-    private static LinkedList<Song> songs;
-    private static LinkedList<AudioBook> audioBooks;
-    private static LinkedList<Album> albums;
-    private static LinkedList<Playlist> playlists;
+    private LinkedList<Song> songs;
+    private LinkedList<AudioBook> audioBooks;
+    private LinkedList<Album> albums;
+    private LinkedList<Playlist> playlists;
 
 
     /**
      * Creates a new Application object, and creates the associated xml files
      */
     public Application(){
-        if(songsXML == null) songsXML = new AudioXML<>("./files/elements.xml", Song.class);
-        if(audioBooksXML == null) audioBooksXML = new AudioXML<>("./files/elements.xml", AudioBook.class);
-        if(albums == null) albumsXML = new AudioXML<>("./files/albums.xml", Album.class);
-        if(playlistsXML == null) playlistsXML = new AudioXML<>("./files/playlists.xml", Playlist.class);
+        songsXML = new AudioXML<>("./files/elements.xml", Song.class);
+        audioBooksXML = new AudioXML<>("./files/elements.xml", AudioBook.class);
+        albumsXML = new AudioXML<>("./files/albums.xml", Album.class);
+        playlistsXML = new AudioXML<>("./files/playlists.xml", Playlist.class);
 
-        if(songs == null) songs = new LinkedList<>();
-        if(audioBooks == null) audioBooks = new LinkedList<>();
-        if(playlists == null) playlists = new LinkedList<>();
-        if(albums == null) albums = new LinkedList<>();
+        songs = new LinkedList<>();
+        audioBooks = new LinkedList<>();
+        playlists = new LinkedList<>();
+        albums = new LinkedList<>();
 
     }
 
@@ -82,7 +83,7 @@ public class Application {
      * @return the element if found
      * @throws ElementNotFoundException if there is no element with such an id
      */
-    public static AudioElement getElementWithID(int id) throws ElementNotFoundException{
+    public AudioElement getElementWithID(int id) throws ElementNotFoundException{
         for(Song song : songs){
             if(song.getID() == id) return song;
         }
@@ -100,7 +101,7 @@ public class Application {
      * @return the song if found
      * @throws ElementNotFoundException if there is no song with such an id
      */
-    public static Song getSongWithID(int id) throws ElementNotFoundException{
+    public Song getSongWithID(int id) throws ElementNotFoundException{
         for(Song song : songs){
             if(song.getID() == id) return song;
         }

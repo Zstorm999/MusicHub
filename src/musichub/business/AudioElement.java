@@ -81,6 +81,8 @@ public abstract class AudioElement implements IAudioToXML, IHasAnID{
      */
     public String getContent(){ return content;}
 
+    public abstract String toString();
+
     /**
      * Returns the first element having a title passed as parameter in a list
      * @param title title to search for

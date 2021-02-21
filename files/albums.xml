@@ -2,6 +2,7 @@
 <albums>
     <Album>
         <Artist>Panic! At The Disco</Artist>
+        <Length>655</Length>
         <Element>4</Element>
         <Element>5</Element>
         <Element>6</Element>
@@ -11,6 +12,7 @@
     </Album>
     <Album>
         <Artist>Eminem</Artist>
+        <Length>630</Length>
         <Element>10</Element>
         <Element>11</Element>
         <Title>The Eminem Show</Title>
@@ -19,6 +21,7 @@
     </Album>
     <Album>
         <Artist>Duke Ellington &amp; John Coltrane</Artist>
+        <Length>858</Length>
         <Element>7</Element>
         <Element>8</Element>
         <Element>9</Element>

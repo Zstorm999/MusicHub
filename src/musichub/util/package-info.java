@@ -1,5 +1,5 @@
 /**
- * XML-related classes and interfaces
+ * Anything not directly related to the main behaviour of MusicHub, but helping it
  * @author Thomas Archambeau, Eléonore Vaissaire
  */
 

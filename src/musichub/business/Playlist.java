@@ -21,7 +21,7 @@ public class Playlist implements IAudioToXML {
     private String name;
     private int id;
 
-    private List<AudioElement> list;
+    private List<Integer> list;
 
     /**
      * Empty constructor, mandatory for the AudioToXML interface to work correctly
@@ -46,7 +46,7 @@ public class Playlist implements IAudioToXML {
      * Returns a list of AudioElement
      * @return a list of AudioElement
      */
-    public List<AudioElement> getElementsList(){
+    public List<Integer> getElementsList(){
         return list;
     }
 
@@ -68,7 +68,7 @@ public class Playlist implements IAudioToXML {
      */
     public void add(AudioElement elt){
         try{
-            list.add(elt);
+            list.add(elt.getID());
         }
         catch(Exception e){
             e.printStackTrace();
@@ -80,7 +80,12 @@ public class Playlist implements IAudioToXML {
      * @return a complete string with the attributes of the playlist
      */
     public String toString(){
-        return "Playlist : "+ name + ", Elements " + list.toString(); }
+        return name;
+    }
+
+    public String getFullString(){
+        return "Playlist : "+ name + ", Elements " + list.toString();
+    }
 
     public void load(Map<String, List<String>> attributes){
         try{
@@ -89,21 +94,14 @@ public class Playlist implements IAudioToXML {
 
             List<String> idList = attributes.get("Element");
             for(String id : idList){
-                AudioElement elt = Application.getElementWithID(Integer.parseInt(id));
-                list.add(elt);
+                list.add(Integer.parseInt(id));
             }
         }
-        catch(IndexOutOfBoundsException e){
-            e.printStackTrace();
-        }
-        catch(NumberFormatException e){
+        catch(IndexOutOfBoundsException | NumberFormatException e){
             e.printStackTrace();
         }
         catch(NullPointerException e){
             //just ignore
-        }
-        catch(ElementNotFoundException e){
-            e.printStackTrace();
         }
     }
 
@@ -115,8 +113,8 @@ public class Playlist implements IAudioToXML {
 
         LinkedList<String> idList = new LinkedList<>();
 
-        for(AudioElement elt : list){
-            idList.add(Integer.toString(elt.id));
+        for(int elt : list){
+            idList.add(Integer.toString(elt));
         }
         attributes.put("Element", idList);
 

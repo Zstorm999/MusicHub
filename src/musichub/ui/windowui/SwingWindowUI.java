@@ -1,13 +1,10 @@
 package musichub.ui.windowui;
 
-import musichub.business.Album;
-import musichub.business.AudioBook;
-import musichub.business.Playlist;
-import musichub.business.Song;
+import musichub.business.*;
 import musichub.main.Application;
 import musichub.ui.IUserApplication;
+import musichub.util.TimeString;
 
-import java.awt.print.Book;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -15,28 +12,52 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.event.*;
 
 public class SwingWindowUI extends JFrame implements IUserApplication {
+
+    //GUI members
+
     private JPanel contentPane;
     private JTabbedPane tabbedPane1;
+
+    //song panel
     private JPanel songsPanel;
-    private JPanel albumsPanel;
-
-
-
-    private JList songsListDisplay;
-    private JPanel booksPanel;
-    private JPanel playlistsPanel;
-    private JList albumsListDisplay;
-    private JList booksListDisplay;
-    private JList playlistsListDisplay;
-    private JLabel songTitle;
+    private JList songsDisplay;
     private JPanel songInfo;
+    private JLabel songTitle;
     private JLabel songArtist;
     private JLabel songGenre;
+    private JLabel songLength;
+
+
+    //book panel
+    private JPanel booksPanel;
+    private JList booksDisplay;
     private JPanel bookInfo;
     private JLabel bookTitle;
     private JLabel bookAuthor;
     private JLabel bookCategory;
     private JLabel bookLanguage;
+
+
+    //album panel
+    private JPanel albumsPanel;
+    private JList albumsDisplay;
+    private JPanel albumInfo;
+    private JList albumSongsDisplay;
+    private JLabel albumLength;
+    private JLabel albumTitle;
+    private JLabel albumArtist;
+
+
+    //playlist panel
+    private JPanel playlistsPanel;
+    private JList playlistsDisplay;
+    private JLabel playlistTitle;
+    private JPanel playlistInfo;
+    private JList playlistElementDisplay;
+    private JLabel bookLength;
+
+
+    //Other members
 
     private Application app;
 
@@ -50,6 +71,8 @@ public class SwingWindowUI extends JFrame implements IUserApplication {
 
         songInfo.setVisible(false);
         bookInfo.setVisible(false);
+        albumInfo.setVisible(false);
+        playlistInfo.setVisible(false);
 
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
@@ -67,7 +90,6 @@ public class SwingWindowUI extends JFrame implements IUserApplication {
     private int findSelectIndex(int first, int last, int lastFirst, int lastLast, int lastSelected){
         int index = 0;
         if(first != lastFirst){
-            index = first;
 
             if(first == lastLast){ //not a normal case! but swing is weird...
                 index = last;
@@ -93,11 +115,11 @@ public class SwingWindowUI extends JFrame implements IUserApplication {
 
         Vector<Song> v = new Vector<>(app.getSongs());
 
-        songsListDisplay.setListData(v);
+        songsDisplay.setListData(v);
 
 
 
-        songsListDisplay.addListSelectionListener(new ListSelectionListener() {
+        songsDisplay.addListSelectionListener(new ListSelectionListener() {
 
             private int lastFirst = 0;
             private int lastLast = 0;
@@ -120,6 +142,7 @@ public class SwingWindowUI extends JFrame implements IUserApplication {
                 songTitle.setText(selected.getTitle());
                 songArtist.setText(selected.getArtist());
                 songGenre.setText(selected.getGen().toString());
+                songLength.setText(TimeString.timeToString(selected.getLength()));
 
                 if(!songInfo.isVisible())
                     songInfo.setVisible(true);
@@ -132,10 +155,10 @@ public class SwingWindowUI extends JFrame implements IUserApplication {
     private void loadBooksList(){
         Vector<AudioBook> v = new Vector<>(app.getAudioBooks());
 
-        booksListDisplay.setListData(v);
+        booksDisplay.setListData(v);
 
 
-        booksListDisplay.addListSelectionListener(new ListSelectionListener() {
+        booksDisplay.addListSelectionListener(new ListSelectionListener() {
 
             private int lastFirst = 0;
             private int lastLast = 0;
@@ -159,6 +182,7 @@ public class SwingWindowUI extends JFrame implements IUserApplication {
                 bookAuthor.setText(selected.getAuthor());
                 bookCategory.setText(selected.getCategory().toString());
                 bookLanguage.setText(selected.getLanguage().toString());
+                bookLength.setText(TimeString.timeToString(selected.getLength()));
 
                 if(!bookInfo.isVisible())
                     bookInfo.setVisible(true);
@@ -168,23 +192,102 @@ public class SwingWindowUI extends JFrame implements IUserApplication {
     }
 
     private void loadAlbumsList(){
-        Vector<String> v = new Vector<>();
+        Vector<Album> v = new Vector<>(app.getAlbums());
 
-        for(Album album : app.getAlbums()){
-            v.add(album.getTitle());
-        }
+        albumsDisplay.setListData(v);
 
-        albumsListDisplay.setListData(v);
+        albumsDisplay.addListSelectionListener(new ListSelectionListener() {
+
+            private int lastFirst = 0;
+            private int lastLast = 0;
+            private int lastSelected = 0;
+
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if(!e.getValueIsAdjusting()) return;
+
+                int index = findSelectIndex(e.getFirstIndex(), e.getLastIndex(), lastFirst, lastLast, lastSelected);
+
+
+
+                lastSelected = index;
+                lastFirst = e.getFirstIndex();
+                lastLast = e.getLastIndex();
+
+
+                Album selected = v.get(index);
+                albumTitle.setText(selected.getTitle());
+                albumArtist.setText(selected.getArtist());
+                albumLength.setText(TimeString.timeToString(selected.getLength()));
+
+                Vector<Song> content = new Vector<>();
+
+                try {
+                    for (int id : selected.getSongs()) {
+                        content.add(app.getSongWithID(id));
+                    }
+                }
+                catch (ElementNotFoundException err){
+                    System.out.println(err.getMessage());
+                    return;
+                }
+
+                albumSongsDisplay.setListData(content);
+
+                if(!albumInfo.isVisible())
+                    albumInfo.setVisible(true);
+
+            }
+        });
     }
 
     private void loadPlaylistsList(){
-        Vector<String> v = new Vector<>();
+        Vector<Playlist> v = new Vector<>(app.getPlaylists());
 
-        for(Playlist playlist : app.getPlaylists()){
-            v.add(playlist.getName());
-        }
+        playlistsDisplay.setListData(v);
 
-        playlistsListDisplay.setListData(v);
+        playlistsDisplay.addListSelectionListener(new ListSelectionListener() {
+
+            private int lastFirst = 0;
+            private int lastLast = 0;
+            private int lastSelected = 0;
+
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if(!e.getValueIsAdjusting()) return;
+
+                int index = findSelectIndex(e.getFirstIndex(), e.getLastIndex(), lastFirst, lastLast, lastSelected);
+
+
+
+                lastSelected = index;
+                lastFirst = e.getFirstIndex();
+                lastLast = e.getLastIndex();
+
+
+                Playlist selected = v.get(index);
+                playlistTitle.setText(selected.getName());
+
+                Vector<AudioElement> content = new Vector<>();
+
+                try {
+                    for (int id : selected.getElementsList()) {
+                        content.add(app.getElementWithID(id));
+                    }
+                }
+                catch (ElementNotFoundException err){
+                    System.out.println(err.getMessage());
+                    return;
+                }
+
+                playlistElementDisplay.setListData(content);
+
+                if(!playlistInfo.isVisible())
+                    playlistInfo.setVisible(true);
+
+            }
+        });
+
     }
 
     public void run() {
@@ -199,7 +302,9 @@ public class SwingWindowUI extends JFrame implements IUserApplication {
         loadAlbumsList();
         loadPlaylistsList();
 
-        pack();
+        //pack();
+        setSize(800, 600);
         setVisible(true);
     }
+
 }
