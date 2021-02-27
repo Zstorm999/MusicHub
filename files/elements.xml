@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <audio>
         
     <Song>
@@ -224,6 +224,70 @@
         <ID>17</ID>
             
     </Song>
+        
+    <Song>
+                
+        <Artist>Vance Joy</Artist>
+                
+        <Length>239</Length>
+                
+        <Content>/home/thomas/music/imwithyou</Content>
+                
+        <Title>I'm with you</Title>
+                
+        <Genre>Pop</Genre>
+                
+        <ID>24</ID>
+            
+    </Song>
+        
+    <Song>
+                
+        <Artist>Passenger</Artist>
+                
+        <Length>290</Length>
+                
+        <Content>/home/user/music/asftdabh.mp3</Content>
+                
+        <Title>A Song For The Drunk And Broken Hearted</Title>
+                
+        <Genre>Pop</Genre>
+                
+        <ID>25</ID>
+            
+    </Song>
+        
+    <Song>
+                
+        <Artist>The Cab</Artist>
+                
+        <Length>224</Length>
+                
+        <Content>/home/user/music/angelwithashotgun.mp3</Content>
+                
+        <Title>Angel With A Shotgun</Title>
+                
+        <Genre>Rock</Genre>
+                
+        <ID>26</ID>
+            
+    </Song>
+        
+    <Song>
+                
+        <Artist>Elton John</Artist>
+                
+        <Length>229</Length>
+                
+        <Content>/home/user/music/yoursong.mp3</Content>
+                
+        <Title>Your Song</Title>
+                
+        <Genre>Pop</Genre>
+                
+        <ID>27</ID>
+            
+    </Song>
     
     <AudioBook>
         <Category>Documentary</Category>
@@ -249,7 +313,7 @@
         <Length>29881</Length>
         <Content>/home/usr/books/hp1_fr.mp3</Content>
         <Author>J.K.Rowling</Author>
-        <Title>Harry Potter a l'Ecole des Sorciers</Title>
+        <Title>Harry Potter à l'Ecole des Sorciers</Title>
         <ID>13</ID>
     </AudioBook>
     <AudioBook>
@@ -305,5 +369,14 @@
         <Author>The Speech Resource Company</Author>
         <Title>Barack Obama Presidency</Title>
         <ID>22</ID>
+    </AudioBook>
+    <AudioBook>
+        <Category>Novel</Category>
+        <Language>English</Language>
+        <Length>70380</Length>
+        <Content>/home/user/books/eragon.mp3</Content>
+        <Author>Christopher Paolini</Author>
+        <Title>Eragon</Title>
+        <ID>28</ID>
     </AudioBook>
 </audio>

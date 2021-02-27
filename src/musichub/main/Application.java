@@ -24,31 +24,32 @@ import java.util.*;
  */
 public class Application {
 
-    private static AudioXML<Song> songsXML;
-    private static AudioXML<AudioBook> audioBooksXML;
-    private static AudioXML<Album> albumsXML;
-    private static AudioXML<Playlist> playlistsXML;
+
+    private AudioXML<Song> songsXML;
+    private AudioXML<AudioBook> audioBooksXML;
+    private AudioXML<Album> albumsXML;
+    private AudioXML<Playlist> playlistsXML;
 
     
-    private static LinkedList<Song> songs;
-    private static LinkedList<AudioBook> audioBooks;
-    private static LinkedList<Album> albums;
-    private static LinkedList<Playlist> playlists;
+    private LinkedList<Song> songs;
+    private LinkedList<AudioBook> audioBooks;
+    private LinkedList<Album> albums;
+    private LinkedList<Playlist> playlists;
 
 
     /**
      * Creates a new Application object, and creates the associated xml files
      */
     public Application(){
-        if(songsXML == null) songsXML = new AudioXML<>("./files/elements.xml", Song.class);
-        if(audioBooksXML == null) audioBooksXML = new AudioXML<>("./files/elements.xml", AudioBook.class);
-        if(albums == null) albumsXML = new AudioXML<>("./files/albums.xml", Album.class);
-        if(playlistsXML == null) playlistsXML = new AudioXML<>("./files/playlists.xml", Playlist.class);
+        songsXML = new AudioXML<>("./files/elements.xml", Song.class);
+        audioBooksXML = new AudioXML<>("./files/elements.xml", AudioBook.class);
+        albumsXML = new AudioXML<>("./files/albums.xml", Album.class);
+        playlistsXML = new AudioXML<>("./files/playlists.xml", Playlist.class);
 
-        if(songs == null) songs = new LinkedList<>();
-        if(audioBooks == null) audioBooks = new LinkedList<>();
-        if(playlists == null) playlists = new LinkedList<>();
-        if(albums == null) albums = new LinkedList<>();
+        songs = new LinkedList<>();
+        audioBooks = new LinkedList<>();
+        playlists = new LinkedList<>();
+        albums = new LinkedList<>();
 
     }
 
@@ -82,7 +83,7 @@ public class Application {
      * @return the element if found
      * @throws ElementNotFoundException if there is no element with such an id
      */
-    public static AudioElement getElementWithID(int id) throws ElementNotFoundException{
+    public AudioElement getElementWithID(int id) throws ElementNotFoundException{
         for(Song song : songs){
             if(song.getID() == id) return song;
         }
@@ -100,7 +101,7 @@ public class Application {
      * @return the song if found
      * @throws ElementNotFoundException if there is no song with such an id
      */
-    public static Song getSongWithID(int id) throws ElementNotFoundException{
+    public Song getSongWithID(int id) throws ElementNotFoundException{
         for(Song song : songs){
             if(song.getID() == id) return song;
         }
@@ -115,7 +116,7 @@ public class Application {
      * @param elm the element for which to generate an ID, 1 is a song or an audio book, 2 is an album
      * @return an new ID
      */
-    public int createNewId(int elm){
+    private int createNewId(int elm){
         int id = 0;
         //if the element is a song or a book
         if(elm == 1) {
@@ -133,8 +134,8 @@ public class Application {
         //if the element is an album
         else if(elm == 2){
             for(Album album : albums){
-                if(id <= album.getId()){
-                    id = album.getId();
+                if(id <= album.getID()){
+                    id = album.getID();
                 }
             }
         }
@@ -147,7 +148,18 @@ public class Application {
      * @param book the book to add
      */
     public void addAudioBook(AudioBook book){
-        audioBooks.add(book);
+        AudioBook newBook = new AudioBook(book);
+
+        try{
+            newBook.setID(createNewId(1));
+        }
+        catch (IDAlreadySetException e){
+            //TODO: change this so that it outputs to the log file or report exception
+            System.out.println(e.getMessage());
+            return;
+        }
+
+        audioBooks.add(newBook);
     }
 
     /**
@@ -155,7 +167,18 @@ public class Application {
      * @param song the song to add
      */
     public void addSong(Song song){
-        songs.add(song);
+        Song newSong = new Song(song);
+
+        try {
+            newSong.setID(createNewId(1));
+        }
+        catch (IDAlreadySetException e){
+            //TODO: change this so that it outputs to the log file or report exception
+            System.out.println(e.getMessage());
+            return;
+        }
+
+        songs.add(newSong);
     }
 
     /**
@@ -163,7 +186,18 @@ public class Application {
      * @param album the album to add
      */
     public void addAlbum(Album album){
-        albums.add(album);
+        Album newAlbum = new Album(album);
+
+        try{
+            newAlbum.setID(createNewId(2));
+        }
+        catch (IDAlreadySetException e){
+            //TODO: change this so that it outputs to the log file or report exception
+            System.out.println(e.getMessage());
+            return;
+        }
+
+        albums.add(newAlbum);
     }
 
     /**
@@ -196,6 +230,7 @@ public class Application {
      * @param name the name of the new playlist
      */
     public void createPlaylist(String name){
+        //TODO: wtf is that doing here !
         int id = 0;
         int choice;
         String songTitle, bookTitle, newChoice;

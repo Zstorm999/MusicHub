@@ -2,7 +2,7 @@ package musichub.business;
 
 import java.util.List;
 
-import musichub.util.AudioToXML;
+import musichub.util.IAudioToXML;
 
 /**
  * Represents any audio element 
@@ -10,10 +10,10 @@ import musichub.util.AudioToXML;
  * @see AudioBook
  * @author Thomas Archambeau, Eléonore Vaissaire
  */
-public abstract class AudioElement implements AudioToXML{
+public abstract class AudioElement implements IAudioToXML, IHasAnID{
     protected String title;
     protected int length;
-    protected int id;
+    protected int id = -1;
     protected String content;
 
     /**
@@ -27,14 +27,22 @@ public abstract class AudioElement implements AudioToXML{
      * Creates a new AudioElement
      * @param title the title
      * @param length the length in seconds
-     * @param id the id
      * @param content the file associated to this element
      */
-    public AudioElement(String title, int length, int id, String content){
+    public AudioElement(String title, int length, String content){
         this.title = title;
         this.length = length;
-        this.id = id;
         this.content = content;
+    }
+
+    /**
+     * Copy constructor
+     * @param other another audio element
+     */
+    public AudioElement(AudioElement other){
+        this.title = other.title;
+        this.length = other.length;
+        this.content = other.content;
     }
 
     /**
@@ -43,6 +51,16 @@ public abstract class AudioElement implements AudioToXML{
      */
     public int getID(){
         return id;
+    }
+
+    public void setID(int newID) throws IDAlreadySetException{
+
+        if(id != -1){
+            throw new IDAlreadySetException("This element already has an ID! Why are you trying to resetting it ?");
+        }
+
+        this.id = newID;
+
     }
 
     /**
@@ -63,6 +81,8 @@ public abstract class AudioElement implements AudioToXML{
      */
     public String getContent(){ return content;}
 
+    public abstract String toString();
+
     /**
      * Returns the first element having a title passed as parameter in a list
      * @param title title to search for
@@ -72,7 +92,7 @@ public abstract class AudioElement implements AudioToXML{
      */
     public static AudioElement getElementWithTitle(String title, List<? extends AudioElement> list) throws ElementNotFoundException{
         for(AudioElement elt : list){
-            if(elt.title == title) return elt;
+            if(elt.title.equals(title)) return elt;
         }
 
         throw new ElementNotFoundException("Unable to find AudioElement with title: " + title + " in the list given");

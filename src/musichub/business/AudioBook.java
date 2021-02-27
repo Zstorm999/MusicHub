@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import musichub.util.AudioToXML;
+import musichub.util.IAudioToXML;
 
 /**
  * Represents an audio book
@@ -33,14 +33,24 @@ public class AudioBook extends AudioElement implements Comparable<AudioBook>{
      * @param category the category
      * @param title the title
      * @param length the length in seconds
-     * @param id the id
      * @param content the file associated to this book
      */
-    public AudioBook(String author, Languages language, Categories category, String title, int length, int id, String content){
-        super(title, length, id, content);
+    public AudioBook(String author, Languages language, Categories category, String title, int length, String content){
+        super(title, length, content);
         this.author = author;
         this.language = language;
         this.category = category;
+    }
+
+    /**
+     * Copy constructor
+     * @param other another book
+     */
+    public AudioBook(AudioBook other){
+        super(other);
+        this.author = other.author;
+        this.language = other.language;
+        this.category = other.category;
     }
 
     /**
@@ -70,21 +80,20 @@ public class AudioBook extends AudioElement implements Comparable<AudioBook>{
      * @return a complete string with all the attributes
      */
     public String toString(){
-        String result = title + ", by : " + author + ", " + language + ", " + category + ", " + length + "s, " + content + "; ";
-        return result;
+        return title;
     }
 
     
     public Map<String, List<String>> save(){
         HashMap<String, List<String>> attributes = new HashMap<>();
 
-        attributes.put("Author", AudioToXML.toList(author));
-        attributes.put("Language", AudioToXML.toList(language.toString()));
-        attributes.put("Category", AudioToXML.toList(category.toString()));
-        attributes.put("Title", AudioToXML.toList(title));
-        attributes.put("Length", AudioToXML.toList(Integer.toString(length)));
-        attributes.put("ID", AudioToXML.toList(Integer.toString(id)));
-        attributes.put("Content", AudioToXML.toList(content));
+        attributes.put("Author", IAudioToXML.toList(author));
+        attributes.put("Language", IAudioToXML.toList(language.toString()));
+        attributes.put("Category", IAudioToXML.toList(category.toString()));
+        attributes.put("Title", IAudioToXML.toList(title));
+        attributes.put("Length", IAudioToXML.toList(Integer.toString(length)));
+        attributes.put("ID", IAudioToXML.toList(Integer.toString(id)));
+        attributes.put("Content", IAudioToXML.toList(content));
 
         return attributes;
     }
@@ -101,13 +110,7 @@ public class AudioBook extends AudioElement implements Comparable<AudioBook>{
             content = attributes.get("Content").get(0);
 
         }
-        catch(IndexOutOfBoundsException e){
-            e.printStackTrace();
-        }
-        catch(NumberFormatException e){
-            e.printStackTrace();
-        }
-        catch(NullPointerException e){
+        catch(IndexOutOfBoundsException | NullPointerException | NumberFormatException e){
             e.printStackTrace();
         }
 

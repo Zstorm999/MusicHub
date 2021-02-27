@@ -2,14 +2,11 @@ package musichub.ui.consoleui;
 
 import musichub.business.*;
 import musichub.main.Application;
-import musichub.ui.UserApplication;
+import musichub.ui.UserLoopApplication;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Represents the class that handle the application and its functions
@@ -26,7 +23,7 @@ import java.util.Scanner;
  * @see Categories
  * @author Thomas Archembeau, Eléonore Vaissaire
  */
-public class ConsoleUI implements UserApplication {
+public class ConsoleUI extends UserLoopApplication {
     
     private Application app;
     private boolean mustEnd;
@@ -125,7 +122,7 @@ public class ConsoleUI implements UserApplication {
 
     private void addSong() throws IllegalStateException{
         String songTitle, artistName, content;
-        int length, genreChoice, id;
+        int length, genreChoice;
         Genres genre;
 
         System.out.println("Enter the title of the song : ");
@@ -163,15 +160,13 @@ public class ConsoleUI implements UserApplication {
         System.out.println("Enter the path to your song : ");
         content = scan.nextLine(); //Not taken into account
 
-        id = app.createNewId(1);
 
-        Song newSong = new Song(artistName, genre, songTitle, length, id, content);
+        Song newSong = new Song(artistName, genre, songTitle, length, content);
         app.addSong(newSong);
     }
 
     private void addAlbum(){
         String albumTitle, artistName;
-        int id;
         Date newDate;
 
         String date;
@@ -192,9 +187,8 @@ public class ConsoleUI implements UserApplication {
             return;
         }
 
-        id = app.createNewId(2);
 
-        Album newAlbum = new Album(albumTitle, artistName, id, newDate);
+        Album newAlbum = new Album(albumTitle, artistName, newDate);
         app.addAlbum(newAlbum);
     }
 
@@ -216,7 +210,7 @@ public class ConsoleUI implements UserApplication {
 
     private void addAudioBook(){
         String bookTitle, artistName, content;
-        int length, langChoice, catChoice, id;
+        int length, langChoice, catChoice;
         Languages lang;
         Categories cat;
 
@@ -273,9 +267,8 @@ public class ConsoleUI implements UserApplication {
         System.out.println("Enter the path to the associated file : ");
         content = scan.nextLine(); //not taken into account
 
-        id = app.createNewId(1);
 
-        AudioBook newBook = new AudioBook(artistName, lang, cat, bookTitle, length, id, content);
+        AudioBook newBook = new AudioBook(artistName, lang, cat, bookTitle, length, content);
         app.addAudioBook(newBook);
     }
 
@@ -300,7 +293,7 @@ public class ConsoleUI implements UserApplication {
 
     private void help(){
         System.out.println("1. Add a Song to MusicHub \nThis function add a song to the program.\nIt will ask you some details that you will need to give in order to save it.");
-        System.out.println("\n2. Add an Album to Musichub \nThis function add an album to the program.\nIt will need from you to answer some details about the album in order to save it.");
+        System.out.println("\n2. Add an Album to MusicHub \nThis function add an album to the program.\nIt will need from you to answer some details about the album in order to save it.");
         System.out.println("\n3. Add a song to an album \nThis function will add a song to an album, where both of them need to already exist in the program.\nThe program will ask for the names of the song and the album.");
         System.out.println("\n4. Add an Audio Book to MusicHub \nThis function add an audio book to the program.\nIt will ask you for different details that you will need to answer.");
         System.out.println("\n5. Creation of a new Playlist\nThis function will create a new playlist and will ask you to add some elements.\nYou will need to know the name of the elements you wish to add");
@@ -342,7 +335,20 @@ public class ConsoleUI implements UserApplication {
             return;
         }
 
-        List<Song> list = album.getSongs();
+        //List<Song> list = album.getSongs();
+
+        List<Song> list = new LinkedList<>();
+
+        try {
+            for (int id : album.getSongs()) {
+                list.add(app.getSongWithID(id));
+            }
+        }
+        catch (ElementNotFoundException e){
+            System.out.println(e.getMessage());
+            return;
+        }
+
         Collections.sort(list);
         for(Song song : list){
             System.out.println(song);
@@ -373,8 +379,14 @@ public class ConsoleUI implements UserApplication {
             return;
         }
 
-        for(Song song : alb.getSongs()){
-            System.out.println(song);
+
+        try {
+            for (int id : alb.getSongs()) {
+                System.out.println(app.getSongWithID(id));
+            }
+        }
+        catch (ElementNotFoundException e){
+            System.out.println(e.getMessage());
         }
 
 

@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import musichub.main.Application;
-import musichub.util.AudioToXML;
+import musichub.util.IAudioToXML;
 
 /**
  * Represents an album. <br>
@@ -18,14 +18,16 @@ import musichub.util.AudioToXML;
  * @see Genres
  * @author Thomas Archambeau, Eléonore Vaissaire
  */
-public class Album implements AudioToXML, Comparable<Album>{
+public class Album implements IAudioToXML, Comparable<Album>, IHasAnID{
     private String title;
     private String artist;
 
-    private int id;
+    private int id = -1;
     private Date date;
 
-    private List<Song> list;
+    int length;
+
+    private List<Integer> list;
 
     private SimpleDateFormat dateFormat;
 
@@ -36,23 +38,37 @@ public class Album implements AudioToXML, Comparable<Album>{
     public Album(){
         dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         list = new LinkedList<>();
+
+        length = 0;
     }
 
     /**
      * Creates a new album
      * @param title the title
      * @param artist the artist
-     * @param id the id
      * @param date the date of creation
      */
-    public Album(String title, String artist, int id, Date date){
+    public Album(String title, String artist, Date date){
         this();
 
         this.title = title;
         this.artist = artist;
-        this.id = id;
         this.date = date;
 
+    }
+
+    /**
+     * Copy constructor
+     * @param other another album
+     */
+    public Album(Album other){
+        this();
+
+        this.date = other.date;
+        this.artist = other.artist;
+        this.title = other.title;
+
+        this.list = other.list;
     }
 
 
@@ -74,8 +90,17 @@ public class Album implements AudioToXML, Comparable<Album>{
      * Returns the album's id
      * @return album's id
      */
-    public int getId(){
+    public int getID(){
         return id;
+    }
+
+    public void setID(int newID) throws IDAlreadySetException {
+
+        if( id != -1){
+            throw new IDAlreadySetException("This Album already has an ID! Why are you trying to resetting it ?");
+        }
+
+        this.id = newID;
     }
 
     /**
@@ -83,11 +108,6 @@ public class Album implements AudioToXML, Comparable<Album>{
      * @return the total length in seconds of the album
      */
     public int getLength(){
-        int length = 0;
-        for(Song elt : list){
-            length += elt.getLength();
-        }
-
         return length;
     }
 
@@ -99,12 +119,19 @@ public class Album implements AudioToXML, Comparable<Album>{
         return title;
     }
 
+    public String getArtist(){
+        return artist;
+    }
+
     /**
      * Add a song to the album
      * @param song the song to add
      */
     public void add(Song song){
-        list.add(song);
+        list.add(song.getID());
+
+        length += song.getLength();
+
     }
 
     /**
@@ -112,6 +139,10 @@ public class Album implements AudioToXML, Comparable<Album>{
      * @return a complete string with all the attributes
      */
     public String toString(){
+        return title;
+    }
+
+    public String getFullString(){
         return "Album: " + title + ", by: " + artist + ", published on " + date + "; total length: " + getLength() + "s.";
     }
 
@@ -119,7 +150,7 @@ public class Album implements AudioToXML, Comparable<Album>{
      * Returns a list of all the songs in the album
      * @return a list of all the songs in the album
      */
-    public List<Song> getSongs(){
+    public List<Integer> getSongs(){
         return list;
     }
 
@@ -137,41 +168,33 @@ public class Album implements AudioToXML, Comparable<Album>{
             artist = attributes.get("Artist").get(0);
             id = Integer.parseInt(attributes.get("ID").get(0));
             date = dateFormat.parse(attributes.get("Date").get(0));
+            length = Integer.parseInt(attributes.get("Length").get(0));
 
             for (String id : attributes.get("Element")) {
-                list.add(Application.getSongWithID(Integer.parseInt(id)));                
+                list.add(Integer.parseInt(id));
             }
 
         }
-        catch(IndexOutOfBoundsException e){
+        catch(IndexOutOfBoundsException | ParseException | NumberFormatException e){
             e.printStackTrace();
-        }
-        catch(NumberFormatException e){
-            e.printStackTrace();
-        }
-        catch(NullPointerException e){
+        } catch(NullPointerException e){
             //just ignore
-        }
-        catch(ParseException e){
-            e.printStackTrace();
-        }
-        catch(ElementNotFoundException e){
-            e.printStackTrace();
         }
     }
 
     public Map<String, List<String>> save(){
         HashMap<String, List<String>> attributes = new HashMap<>();
 
-        attributes.put("Title", AudioToXML.toList(title));
-        attributes.put("Artist", AudioToXML.toList(artist));
-        attributes.put("ID", AudioToXML.toList(Integer.toString(id)));
-        attributes.put("Date", AudioToXML.toList(dateFormat.format(date)));
+        attributes.put("Title", IAudioToXML.toList(title));
+        attributes.put("Artist", IAudioToXML.toList(artist));
+        attributes.put("ID", IAudioToXML.toList(Integer.toString(id)));
+        attributes.put("Date", IAudioToXML.toList(dateFormat.format(date)));
+        attributes.put("Length", IAudioToXML.toList(Integer.toString(length)));
 
         LinkedList<String> idList = new LinkedList<>();
 
-        for(Song elt : list){
-            idList.add(Integer.toString(elt.id));
+        for(int elt : list){
+            idList.add(Integer.toString(elt));
         }
 
         attributes.put("Element", idList);
