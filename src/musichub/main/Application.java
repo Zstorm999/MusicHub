@@ -20,7 +20,7 @@ import java.util.*;
  * @see Genres
  * @see Languages
  * @see Categories
- * @author Thomas Archembeau, Eléonore Vaissaire
+ * @author Thomas Archambeau, Eléonore Vaissaire
  */
 public class Application {
 
